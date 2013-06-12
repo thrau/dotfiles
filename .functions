@@ -79,33 +79,34 @@ rmab() {
 
 ## maven recursive clean (this is so ugly ...)
 mvnrc() {
-  # remove all abandoned bundles first
-  rmab
+	# remove all abandoned bundles first
+	rmab
 
-  poms=$(find . -type f -name pom.xml -print |
-  	perl -n -e '$x = $_; $x =~ tr%/%%cd; print length($x), " $_";' |
-  	sort -k 1n -k 2 |
-  	sed 's/^[0-9][0-9]* //');
+	# "sorted by path" (amount of slahes). looks like breadth first search
+	poms=$(find . -type f -name pom.xml -print |
+		perl -n -e '$x = $_; $x =~ tr%/%%cd; print length($x), " $_";' |
+		sort -k 1n -k 2 |
+		sed 's/^[0-9][0-9]* //');
 
-for pom in $poms
-do
-	path=`dirname $pom`
+	for pom in $poms
+	do
+		path=`dirname $pom`
 
-	found=0
-	for t in `find $path -name target -o -name .project`; do
-		found=1
-		break
+		found=0
+		for t in `find $path -name target -o -name .project`; do
+			found=1
+			break
+		done
+
+		if [ $found == 0 ]; then
+			echo "skipping $pom"
+			continue
+		fi
+
+		echo -n "cleaning $pom ..."
+		mvn -U -fn -B -q -f $pom clean eclipse:clean
+		echo " done!"
 	done
-
-	if [ $found == 0 ]; then
-		echo "skipping $pom"
-		continue
-	fi
-
-	echo -n "cleaning $pom ..."
-	mvn -U -fn -B -q -f $pom clean eclipse:clean
-	echo " done!"
-done
 }
 
 
@@ -113,24 +114,24 @@ done
 ex () {
 	if [ -f $1 ] ; then
 		case $1 in
-		*.tar.bz2)   tar xvjf $1    ;;
-		*.tar.gz)    tar xvzf $1    ;;
-		*.bz2)       bunzip2 $1     ;;
-		*.rar)       unrar x $1     ;;
-		*.gz)        gunzip $1      ;;
-		*.tar)       tar xvf $1     ;;
-		*.tbz2)      tar xvjf $1    ;;
-		*.tgz)       tar xvzf $1    ;;
-		*.zip)       unzip $1       ;;
-		*.Z)         uncompress $1  ;;
-		*.7z)        7z x $1        ;;
-		*.exe)       cabextract $1  ;;
-		*.jar)       jar xvf $1     ;;
-		*)           echo "'$1': unrecognized file compression" ;;
-esac
-else
-	echo "'$1' is not a valid file"
-fi
+			*.tar.bz2)   tar xvjf $1    ;;
+			*.tar.gz)    tar xvzf $1    ;;
+			*.bz2)       bunzip2 $1     ;;
+			*.rar)       unrar x $1     ;;
+			*.gz)        gunzip $1      ;;
+			*.tar)       tar xvf $1     ;;
+			*.tbz2)      tar xvjf $1    ;;
+			*.tgz)       tar xvzf $1    ;;
+			*.zip)       unzip $1       ;;
+			*.Z)         uncompress $1  ;;
+			*.7z)        7z x $1        ;;
+			*.exe)       cabextract $1  ;;
+			*.jar)       jar xvf $1     ;;
+			*)           echo "'$1': unrecognized file compression" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
 # chmod restore
