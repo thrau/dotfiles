@@ -137,7 +137,7 @@ ex () {
           *.Z)         uncompress $1  ;;
           *.7z)        7z x $1        ;;
           *.exe)       cabextract $1  ;;
-	  *.jar)       jar xvf $1     ;;
+          *.jar)       jar xvf $1     ;;
           *)           echo "'$1': unrecognized file compression" ;;
       esac
   else
@@ -164,24 +164,24 @@ chres() {
 
 ## clone from bitbucket
 gcbb() {
-    if [ ! -d $1 ]; then
-        git clone git@bitbucket.org:$1.git $2
-    else
-        echo "$1 already exists"
-    fi
+  if [ ! -d $1 ]; then
+    git clone git@bitbucket.org:$1.git $2
+  else
+    echo "$1 already exists"
+  fi
 }
 ## clone frame github
 gcgh() {
-    if [ ! -d $1 ]; then
-        git clone git@github.com:$1.git $2
-    else
-        echo "$1 already exists"
-    fi
+  if [ ! -d $1 ]; then
+    git clone git@github.com:$1.git $2
+  else
+    echo "$1 already exists"
+  fi
 }
 
 ## remap control to caps lock (remove capslock)
 rmcaps() {
-    xmodmap -e 'remove Lock = Caps_Lock'
-    xmodmap -e 'keysym Caps_Lock = Control_L'
-    xmodmap -e 'add Control = Control_L'
+  xmodmap -e 'remove Lock = Caps_Lock'
+  xmodmap -e 'keysym Caps_Lock = Control_L'
+  xmodmap -e 'add Control = Control_L'
 }
