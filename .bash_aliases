@@ -76,7 +76,7 @@ gp() {
     branch=$1
   fi
 
-  git push $1 HEAD
+  git push $branch HEAD
 }
 
 ### clone from bitbucket
