@@ -47,6 +47,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
+if [ -f ~/.functions ]; then
+    . ~/.functions
 fi

@@ -82,4 +82,5 @@ fi
 deploy .gitconfig
 deploy .bashrc
 deploy .zshrc
-deploy .bash_aliases
+deploy .aliases
+deploy .functions
