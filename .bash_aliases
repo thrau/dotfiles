@@ -37,8 +37,8 @@ alias 'gca'="git commit -a"
 alias 'gcam'="git commit -am"
 alias 'gcm'="git commit -m"
 alias 'gco'="git checkout"
+alias 'gd'="git diff"
 alias 'gl'="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias 'gp'="git push origin HEAD"
 alias 'gru'="git remote update"
 alias 'grv'="git remote -v"
 alias 'gs'="git status -sb"
@@ -66,6 +66,35 @@ gsync() {
   fi
 
   git reset --hard $branch/master
+}
+
+### git push
+gp() {
+  if [ ! $1 ]; then
+    branch="origin"
+  else
+    branch=$1
+  fi
+
+  git push $1 HEAD
+}
+
+### clone from bitbucket
+gcbb() {
+  if [ ! -d $1 ]; then
+    git clone git@bitbucket.org:$1.git $2
+  else
+    echo "$1 already exists"
+  fi
+}
+
+### clone frome github
+gcgh() {
+  if [ ! -d $1 ]; then
+    git clone git@github.com:$1.git $2
+  else
+    echo "$1 already exists"
+  fi
 }
 
 ## maven
@@ -156,23 +185,6 @@ chres() {
 
   find $folder -type d | xargs chmod 755
   find $folder -type f | xargs chmod 644
-}
-
-## clone from bitbucket
-gcbb() {
-  if [ ! -d $1 ]; then
-    git clone git@bitbucket.org:$1.git $2
-  else
-    echo "$1 already exists"
-  fi
-}
-## clone frame github
-gcgh() {
-  if [ ! -d $1 ]; then
-    git clone git@github.com:$1.git $2
-  else
-    echo "$1 already exists"
-  fi
 }
 
 ## remap control to caps lock (remove capslock)
