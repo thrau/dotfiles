@@ -151,15 +151,11 @@ chres() {
   if [ $1 ]; then
     folder=$1
   else
-    folder="./"
+    folder="."
   fi
 
-  for i in `find $folder -type d`; do
-    chmod 755 $i
-  done
-  for i in `find $folder -type f`; do
-    chmod 644 $i
-  done
+  find $folder -type d | xargs chmod 755
+  find $folder -type f | xargs chmod 644
 }
 
 ## clone from bitbucket
