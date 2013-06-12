@@ -52,7 +52,7 @@ alias gmv='qmv -f destination-only -e geany'
 alias pdfmerge='gs -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
 
 # functions
-## git stuff
+## git
 gsync() {
   git remote update
 
@@ -64,6 +64,59 @@ gsync() {
 
   git reset --hard $branch/master
 }
+
+## maven
+### remove abandoned bundles (bundles with only a target folder)
+rmab() {
+  for p in `find -name "target"`; do
+    if [ ! -d $p ]; then
+      continue
+    fi
+    
+    parent=`dirname $p`
+    
+    files=($parent/*)
+    
+    if [ `basename ${files[0]}` = "target" ]; then
+      if [ ! ${files[1]} ]; then
+        echo "rm -rf $parent"
+        rm -rf $parent
+      fi
+    fi
+  done;
+}
+
+### maven recursive clean (this is so ugly ...)
+mvnrc() {
+  # remove all abandoned bundles first
+  rmab
+
+  poms=$(find . -type f -name pom.xml -print |
+    perl -n -e '$x = $_; $x =~ tr%/%%cd; print length($x), " $_";' |
+    sort -k 1n -k 2 |
+    sed 's/^[0-9][0-9]* //');
+
+  for pom in $poms
+  do
+    path=`dirname $pom`
+
+    found=0
+    for t in `find $path -name target -o -name .project`; do
+      found=1
+      break
+    done
+
+    if [ $found == 0 ]; then
+      echo "skipping $pom"
+      continue
+    fi
+
+    echo -n "cleaning $pom ..."
+    mvn -U -fn -B -q -f $pom clean eclipse:clean
+    echo " done!"
+  done
+}
+
 
 ## extract
 ex () {
@@ -92,19 +145,18 @@ ex () {
 ## chmod restore
 ##   recursively sets chmod of files to 644 and directories to 755
 chres() {
-    if [ $1 ]
-    then
-	folder=$1
-    else
-	folder="./"
-    fi
-    
-    for i in `find $folder -type d`; do
-	chmod 755 $i
-    done
-    for i in `find $folder -type f`; do
-	chmod 644 $i
-    done
+  if [ $1 ]; then
+    folder=$1
+  else
+    folder="./"
+  fi
+
+  for i in `find $folder -type d`; do
+    chmod 755 $i
+  done
+  for i in `find $folder -type f`; do
+    chmod 644 $i
+  done
 }
 
 ## clone from bitbucket
@@ -122,26 +174,6 @@ gcgh() {
     else
         echo "$1 already exists"
     fi
-}
-
-## remove abandoned bundles (bundles with only a target folder)
-rmab() {
-    for p in `find -name "target"`; do
-	if [ ! -d $p ]; then
-	    continue
-	fi
-	
-	parent=`dirname $p`
-	
-	files=($parent/*)
-	
-	if [ `basename ${files[0]}` = "target" ]; then
-	    if [ ! ${files[1]} ]; then
-		echo "rm -rf $parent"
-		rm -rf $parent
-	    fi
-	fi
-    done;
 }
 
 ## remap control to caps lock (remove capslock)
