@@ -34,10 +34,13 @@ alias 'gb'="git branch"
 alias 'gba'="git branch -a"
 alias 'gc'="git commit"
 alias 'gca'="git commit -a"
+alias 'gcam'="git commit -am"
+alias 'gcm'="git commit -m"
 alias 'gco'="git checkout"
 alias 'gl'="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias 'gp'="git push origin HEAD"
 alias 'gru'="git remote update"
+alias 'grv'="git remote -v"
 alias 'gs'="git status -sb"
 alias 'gsl'='git shortlog --pretty=format:"%Cgreen(%cr)%Creset - %s"'
 
