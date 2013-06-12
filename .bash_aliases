@@ -55,6 +55,23 @@ alias gmv='qmv -f destination-only -e geany'
 alias pdfmerge='gs -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
 
 # functions
+
+## parse given markdown file to html and open it in a browser
+showdown() {
+  if [ ! $1 ]; then
+    echo "specify a file"
+    return 1;
+  elif [ ! -f $1 ]; then
+    echo "file $1 does not exist"
+    return 1;
+  fi
+
+  fname="$1_$RANDOM.html"
+  fpath="/tmp/$fname"
+  maruku --html $1 -o $fpath
+  x-www-browser $fpath
+}
+
 ## git
 gsync() {
   git remote update
