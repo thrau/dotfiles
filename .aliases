@@ -7,6 +7,11 @@ alias x=exit
 alias c=clear
 
 alias 'cd..'='cd ..'
+alias 'cd....'='cd ../..'
+alias 'cd......'='cd ../../..'
+alias 'cd..2'='cd ../..'
+alias 'cd..3'='cd ../../..'
+alias 'cd..4'='cd ../../../..'
 
 alias e='emacs -nw' # -fg white -bg black'
 alias se='sudo emacs -nw -fg white -bg black'
