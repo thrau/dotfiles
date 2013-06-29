@@ -57,4 +57,4 @@ alias home='ssh thomas@home.rauschig.org'
 alias gmv='qmv -f destination-only -e geany'
 
 #gs merge
-alias pdfmerge='gs -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
+alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
