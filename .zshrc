@@ -11,9 +11,18 @@ bindkey -e
 bindkey ';5D' backward-word
 bindkey ';5C' forward-word
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# Helps alt-backspace kill words stop at forward slashes
+#WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# This would be an alternative way to achieve something similar
+# but it also stops at dashes
+#autoload -U select-word-style
+#select-word-style bash
+
+# Keep 5000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
