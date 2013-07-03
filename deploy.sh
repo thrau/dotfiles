@@ -80,6 +80,7 @@ if [ ! $force ]; then
 fi
 
 deploy .gitconfig
+deploy .environment
 deploy .bashrc
 deploy .zshrc
 deploy .aliases

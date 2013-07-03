@@ -1,5 +1,9 @@
-# Set up the prompt
+# load custom environment variables
+if [ -f ~/.environment ]; then
+    . ~/.environment
+fi
 
+# Set up the prompt
 autoload -Uz promptinit
 promptinit
 prompt adam1

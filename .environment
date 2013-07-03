@@ -1,0 +1,5 @@
+# set timezone
+TZ='Europe/Vienna'
+
+# set default editor
+EDITOR='emacs -nw'
