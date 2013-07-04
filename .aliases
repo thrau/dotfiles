@@ -31,15 +31,25 @@ alias reboot='sudo reboot'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade -y; sudo apt-get autoclean'
 alias dist-upgrade='sudo apt-get update; sudo apt-get dist-upgrade;'
 
-# maven
+# maven goals
 alias 'mvc'='mvn clean'
 alias 'mvce'='mvn clean eclipse:clean'
 alias 'mvi'='mvn install -DskipTests'
-alias 'mvie'='mvn install -DskipTests eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mve'='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mvec'='mvn eclipse:clean'
 alias 'mvci'='mvn clean install -DskipTests'
-alias 'mvcie'='mvn clean install -DskipTests eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mvt'='mvn test'
+alias 'mvct'='mvn clean test'
+alias 'mvp'='mvn package -DskipTests'
+alias 'mvcp'='mvn clean package -DskipTests'
+## maven goals with eclipse
+alias 'mvie'='mvi eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mve'='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mvce'='mvn eclipse:clean'
+alias 'mvcie'='mvci eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
+## maven goals with intellij idea
+alias 'mvij'='mvi idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mvj'='mvn idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mvcj'='mvn idea:clean'
+alias 'mvcij'='mvci idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
 
 # git
 alias 'ga'="git add"
