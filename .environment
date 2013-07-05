@@ -3,3 +3,21 @@ TZ='Europe/Vienna'
 
 # set default editor
 EDITOR='emacs -nw'
+
+if [ -d "/sbin" ]; then
+   PATH="/sbin:$PATH"
+fi
+
+if [ -d "/usr/sbin" ]; then
+   PATH="/usr/sbin:$PATH"
+fi
+
+if [ -d "/usr/local/sbin" ]; then
+   PATH="/usr/sbin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
