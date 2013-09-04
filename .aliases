@@ -28,8 +28,9 @@ alias powerdown='sudo shutdown -h now'
 alias pd=powerdown
 alias reboot='sudo reboot'
 
-alias upgrade='sudo apt-get update; sudo apt-get upgrade -y; sudo apt-get autoclean'
-alias dist-upgrade='sudo apt-get update; sudo apt-get dist-upgrade;'
+alias apt-update=aptupdate
+alias upgrade='apt-update; sudo apt-get upgrade -y; sudo apt-get autoclean'
+alias dist-upgrade='apt-update; sudo apt-get dist-upgrade;'
 
 # maven goals
 alias 'mvc'='mvn clean'

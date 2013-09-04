@@ -14,6 +14,29 @@ showdown() {
 	x-www-browser $fpath
 }
 
+# conditional apt-get update to allow redundant use in other scripts
+aptupdate() {
+	if [ $1 ] && [ $1 = "-f" ]; then
+		sudo apt-get update
+		return 0;
+	fi
+	if [ ! -d /var/cache/apt ]; then
+		sudo apt-get update
+		return 0;
+	fi
+
+	## threshold for new apt-get update in seconds
+	THRESHOLD=3600
+
+	NOW=$(date +%s)
+	LASTUPDATE=$(stat -c %Y /var/cache/apt)
+	DIF=$(($NOW-$LASTUPDATE))
+
+	if [ $DIF -gt $THRESHOLD ]; then
+		sudo apt-get update
+	fi
+}
+
 # git
 gsync() {
 	git remote update
