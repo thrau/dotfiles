@@ -3,3 +3,7 @@
 	name = Thomas Rausch
 [core]
 	editor = emacs -nw -fg white -bg black
+
+[alias]
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
