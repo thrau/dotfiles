@@ -37,28 +37,15 @@ aptupdate() {
 	fi
 }
 
-# git
-gsync() {
-	git remote update
-
-	if [ ! $1 ]; then
-		branch="origin"
-	else
-		branch=$1
-	fi
-
-	git reset --hard $branch/master
-}
-
 ## git push
 gp() {
 	if [ ! $1 ]; then
-		branch="origin"
+		remote="origin"
 	else
-		branch=$1
+		remote=$1
 	fi
 
-	git push $branch HEAD
+	git push $remote HEAD
 }
 
 ## clone from bitbucket
