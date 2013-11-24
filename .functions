@@ -66,6 +66,22 @@ gcgh() {
 	fi
 }
 
+## initialise an empty git repository and commit a basic .gitignore
+ginit() {
+	if [ -d .git ]; then
+		echo "directory already a git repository"
+		return 1
+	fi
+
+	if [ ! -f .gitignore ]; then
+		cp ~/.dotfiles/templates/.gitignore .
+	fi
+
+	git init
+	git add .gitignore
+	git commit -m "Initial commit"
+}
+
 # maven
 ## remove abandoned bundles (bundles with only a target folder)
 rmab() {
