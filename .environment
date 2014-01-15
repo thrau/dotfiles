@@ -4,6 +4,9 @@ TZ='Europe/Vienna'
 # set default editor
 EDITOR='emacs -nw'
 
+# maven
+M2_HOME=/opt/maven
+
 if [ -d "/sbin" ]; then
    PATH="/sbin:$PATH"
 fi

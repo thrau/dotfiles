@@ -130,7 +130,7 @@ mvnrc() {
 		fi
 
 		echo -n "cleaning $pom ..."
-		mvn -U -fn -B -q -f $pom clean eclipse:clean
+		mvn -fn -B -q -o -f $pom clean eclipse:clean
 		echo " done!"
 	done
 }

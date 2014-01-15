@@ -41,6 +41,7 @@ alias 'mvt'='mvn test'
 alias 'mvct'='mvn clean test'
 alias 'mvp'='mvn package -DskipTests'
 alias 'mvcp'='mvn clean package -DskipTests'
+alias 'mvag'='mvn archetype:generate'
 ## maven goals with eclipse
 alias 'mvie'='mvi eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
 alias 'mve'='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
