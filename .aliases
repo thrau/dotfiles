@@ -80,3 +80,6 @@ alias gmv='qmv -f destination-only -e geany'
 
 #gs merge
 alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
+
+# i need this far too often. silly java
+alias 'idea-kill'='pkill -9 -f "(java)(.*)(idea)"'

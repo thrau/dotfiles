@@ -179,3 +179,15 @@ rmcaps() {
 	xmodmap -e 'keysym Caps_Lock = Control_L'
 	xmodmap -e 'add Control = Control_L'
 }
+
+# clean intellij IDEA project files
+idea-clean() {
+	if [ $1 ]; then
+		folder=$1
+	else
+		folder="."
+	fi
+
+	REGEX=".*\.\(iml\|ipr|idea\)"
+	find $1 -regex $REGEX -exec rm -rf {} \;
+}
