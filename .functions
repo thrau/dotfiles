@@ -180,6 +180,33 @@ rmcaps() {
 	xmodmap -e 'add Control = Control_L'
 }
 
+## normalize a pdf using PDFCROP and Ghostscript
+pdfnorm() {
+	MARGINS=30
+	PAPERSIZE=a4
+
+	if [ ! $1 ]; then
+		echo "please specify an input file"
+		return 1;
+	elif [ ! -f $1 ]; then
+		echo "$1 is not a file"
+		return 1;
+	fi
+
+	TMPFILE=$(mktemp)
+
+	if [ ! $2 ]; then
+		OUTFILE=output.pdf
+	else
+		OUTFILE=$2
+	fi
+
+	pdfcrop --margins $MARGINS $1 $TMPFILE > /dev/null
+	ghostscript -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sPAPERSIZE=$PAPERSIZE -dFIXEDMEDIA -dPDFFitPage -sOutputFile=$OUTFILE $TMPFILE > /dev/null
+
+	rm $TMPFILE
+}
+
 # clean intellij IDEA project files
 idea-clean() {
 	if [ $1 ]; then
