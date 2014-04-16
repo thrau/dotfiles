@@ -69,6 +69,7 @@ alias 'gl'="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C
 alias 'gru'="git remote update"
 alias 'grv'="git remote -v"
 alias 'gs'="git status -sb"
+alias 'gs.'="gs ."
 alias 'gsl'='git shortlog --pretty=format:"%Cgreen(%cr)%Creset - %s"'
 
 #dz ssh
