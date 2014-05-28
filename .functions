@@ -219,12 +219,18 @@ idea-clean() {
 	find $1 -regex $REGEX -exec rm -rf {} \;
 }
 
-## recursive git status
-rgs() {
+## recursive git
+rg() {
 	for f in $(find -name .git -a -type d | sed "s/^\.\///"); do
 		d=$(dirname $f)
 		echo -e "\e[1;34m${d}\e[0m"
-		(cd $d; git status -sb)
+		(cd $d; git "$@")
 		echo
 	done
 }
+
+## recursive git status
+alias rgs='rg status -sb'
+
+## recursive git remote update
+alias rgru='rg remote update'
