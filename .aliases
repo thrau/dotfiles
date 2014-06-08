@@ -8,11 +8,13 @@ alias egrep='egrep --color=auto'
 
 # basic shell commands
 alias ll='ls -alFh'
+alias llt='ll --sort time -r --ignore "\." --ignore "\.\."'
 alias la='ls -A'
 alias l='ls -lFh'
 
 alias x=exit
 alias c=clear
+alias root="sudo -i"
 
 alias 'cd..'='cd ..'
 alias 'cd....'='cd ../..'
@@ -84,3 +86,6 @@ alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrit
 
 # i need this far too often. silly java
 alias 'idea-kill'='pkill -9 -f "(java)(.*)(idea)"'
+
+# open a jar that contains a swing application with anti aliasing on
+alias swingjar='java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -jar'
