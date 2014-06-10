@@ -9,3 +9,4 @@
 	unignore = update-index --no-assume-unchanged
 	unstage = reset HEAD
 	unstash = stash pop
+	amend = commit --amend --no-edit
