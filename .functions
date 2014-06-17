@@ -215,8 +215,9 @@ idea-clean() {
 		folder="."
 	fi
 
-	REGEX=".*\.\(iml\|ipr|idea\)"
+	REGEX=".*\.\(iml\|ipr\)"
 	find $1 -regex $REGEX -exec rm -rf {} \;
+	find $1 -type d -name ".idea" | xargs rm -r
 }
 
 ## recursive git
