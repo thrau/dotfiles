@@ -11,6 +11,7 @@ alias ll='ls -alFh'
 alias llt='ll --sort time -r --ignore "\." --ignore "\.\."'
 alias la='ls -A'
 alias l='ls -lFh'
+alias cwd='cd $(pwd)'
 
 alias x=exit
 alias c=clear
