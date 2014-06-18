@@ -85,21 +85,17 @@ ginit() {
 # maven
 ## remove abandoned bundles (bundles with only a target folder)
 rmab() {
-	for p in `find -name "target"`; do
-		if [ ! -d $p ]; then
-			continue
+	for p in `find -type d -name "target"`; do
+		
+		parent=$(dirname $p)
+
+		cnt=$(ls -a1 $parent --ignore "*.iml" --ignore "*.ipr" --ignore ".project" --ignore ".classpath" --ignore ".settings" | wc -l)
+
+		if [ $cnt -le 3 ]; then
+			echo "rm -r $parent"
+			rm -r $parent
 		fi
-		
-		parent=`dirname $p`
-		
-		files=($parent/*)
-		
-		if [ `basename ${files[0]}` = "target" ]; then
-			if [ ! ${files[1]} ]; then
-				echo "rm -rf $parent"
-				rm -rf $parent
-			fi
-		fi
+
 	done;
 }
 
