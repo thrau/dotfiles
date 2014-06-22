@@ -217,7 +217,7 @@ idea-clean() {
 }
 
 ## recursive git
-rg() {
+rgit() {
 	for f in $(find -name .git -a -type d | sed "s/^\.\///"); do
 		d=$(dirname $f)
 		echo -e "\e[1;34m${d}\e[0m"
@@ -225,6 +225,8 @@ rg() {
 		echo
 	done
 }
+
+alias rg=rgit
 
 ## recursive git status
 alias rgs='rg status -sb'
