@@ -82,6 +82,20 @@ ginit() {
 	git commit -m "Initial commit"
 }
 
+git-report() {
+	if [ ! -d .git ]; then
+		echo "directory is not a git repository"
+		return 1
+	fi
+
+	rev=$(git log --pretty=format:'%h' -n 1)
+
+	tmpfile="gitinspector-report-$rev.html"
+	gitinspector -wTHlrm --format=html > /tmp/$tmpfile
+
+	x-www-browser /tmp/$tmpfile &
+}
+
 # maven
 ## remove abandoned bundles (bundles with only a target folder)
 rmab() {
