@@ -217,6 +217,19 @@ pdfnorm() {
 	rm $TMPFILE
 }
 
+## count words of a pdf
+pdfwc() {
+	if [ ! $1 ]; then
+		echo "please specify an input file"
+		return 1;
+	elif [ ! -f $1 ]; then
+		echo "$1 is not a file"
+		return 1;
+	fi
+
+	pdftotext $1 - | wc -w
+}
+
 # clean intellij IDEA project files
 idea-clean() {
 	if [ $1 ]; then
