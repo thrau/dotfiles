@@ -243,6 +243,15 @@ idea-clean() {
 	find $1 -type d -name ".idea" | xargs rm -r
 }
 
+## trace a given command
+trace() {
+	while [ 1 ]; do
+		clear
+		$@
+		sleep 0.5
+	done
+}
+
 ## recursive git
 rgit() {
 	for f in $(find -name .git -a -type d | sed "s/^\.\///"); do
