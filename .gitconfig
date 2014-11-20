@@ -11,6 +11,7 @@
 	unstash = stash pop
 	amend = commit --amend --no-edit
 	discard = !git checkout -- . && git clean -f -q -- .
+	conflicts = diff --diff-filter=U			# shows a diff of all current merge conflicts
 
 [color]
 	ui = auto
