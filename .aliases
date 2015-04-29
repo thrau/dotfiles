@@ -40,6 +40,7 @@ alias 'mvc'='mvn clean'
 alias 'mvce'='mvn clean eclipse:clean'
 alias 'mvi'='mvn install -DskipTests'
 alias 'mvci'='mvn clean install -DskipTests'
+alias 'mvcit'='mvn clean install'
 alias 'mvt'='mvn test'
 alias 'mvct'='mvn clean test'
 alias 'mvp'='mvn package -DskipTests'
@@ -59,6 +60,8 @@ alias 'mvcij'='mvci idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
 
 # git
 alias 'ga'="git add"
+alias 'ga.'="git add ."
+alias 'gau'="git align -u"
 alias 'gb'="git branch"
 alias 'gba'="git branch -a"
 alias 'gc'="git commit"
