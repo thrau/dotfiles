@@ -13,6 +13,8 @@
 	discard = !git checkout -- . && git clean -f -q -- .
 	conflicts = diff --diff-filter=U			# shows a diff of all current merge conflicts
 	undo = reset HEAD@{1}
+	report = !gitinspector --grading=true
+	report-html = !gitinspector --grading=true --format=html > report.html
 
 [color]
 	ui = auto
