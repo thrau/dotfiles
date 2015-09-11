@@ -118,30 +118,15 @@ mvnrc() {
 	# remove all abandoned bundles first
 	rmab
 
-	# "sorted by path" (amount of slahes). looks like breadth first search
-	poms=$(find . -type f -name pom.xml -print |
-		perl -n -e '$x = $_; $x =~ tr%/%%cd; print length($x), " $_";' |
-		sort -k 1n -k 2 |
-		sed 's/^[0-9][0-9]* //');
+	for target in $(find -type d -name "target"); do
+		dir=$(dirname $target)
+		pom=$dir/pom.xml
 
-	for pom in $poms
-	do
-		path=`dirname $pom`
-
-		found=0
-		for t in `find $path -name target -o -name .project`; do
-			found=1
-			break
-		done
-
-		if [ $found == 0 ]; then
-			echo "skipping $pom"
-			continue
+		if [ -f $pom ]; then
+			echo -n "cleaning $dir ..."
+			(cd $dir; mvn -fn -B -q clean)
+			echo " done!"
 		fi
-
-		echo -n "cleaning $pom ..."
-		mvn -fn -B -q -o -f $pom clean eclipse:clean
-		echo " done!"
 	done
 }
 
