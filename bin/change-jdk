@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# change-jdk
+# Version 0.1
+# Author: Thomas Rausch <thomas@rauschig.org>
+#
+# This script maintains a set of jdk version placed in /usr/lib/jvm.
+# This script lets you conveniently select a jdk version placed in /usr/lib/jvm
+# to point to /usr/lib/jvm/default-java.
+# Both your JAVA_HOME and update-alternatives master-link for all java related
+# links should point to /usr/lib/jvm/default-java for this to make sense
+#
+# Licensed under WTFPL (http://www.wtfpl.net/)
+# -----------------------------------------------------------------------------
+
+## need to be root for this
+sudo -v
+
+ROOT=/usr/lib/jvm
+
+## check if alternatives links to java
+
+readlink "/etc/alternatives/java" | grep -q "default-java"
+
+if [ $? != 0 ]; then
+	echo "[WARN]: /etc/alternatives/java does not appear to point to the default-java directory"
+	echo "[WARN]: this needs to be remedied on order for this script to work properly"
+	echo
+
+	echo "Want me to install alternatives for /usr/lib/jvm/default-java? [y/n]"
+
+	read yn
+
+	if [[ $yn == "y" ]]; then
+		sudo update-alternatives --install /usr/bin/appletviewer appletviewer /usr/lib/jvm/default-java/bin/appletviewer 2000 --slave /usr/share/man/man1/appletviewer.1.gz appletviewer.1.gz /usr/lib/jvm/default-java/man/man1/appletviewer.1.gz
+		sudo update-alternatives --install /usr/bin/extcheck extcheck /usr/lib/jvm/default-java/bin/extcheck 2000 --slave /usr/share/man/man1/extcheck.1.gz extcheck.1.gz /usr/lib/jvm/default-java/man/man1/extcheck.1.gz
+		sudo update-alternatives --install /usr/bin/idlj idlj /usr/lib/jvm/default-java/bin/idlj 2000 --slave /usr/share/man/man1/idlj.1.gz idlj.1.gz /usr/lib/jvm/default-java/man/man1/idlj.1.gz
+		sudo update-alternatives --install /usr/bin/itweb-settings itweb-settings /usr/lib/jvm/default-java/jre/bin/itweb-settings 2000 --slave /usr/share/man/man1/itweb-settings.1.gz itweb-settings.1.gz /usr/lib/jvm/default-java/jre/man/man1/itweb-settings.1.gz
+		sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/default-java/bin/jar 2000 --slave /usr/share/man/man1/jar.1.gz jar.1.gz /usr/lib/jvm/default-java/man/man1/jar.1.gz
+		sudo update-alternatives --install /usr/bin/jarsigner jarsigner /usr/lib/jvm/default-java/bin/jarsigner 2000 --slave /usr/share/man/man1/jarsigner.1.gz jarsigner.1.gz /usr/lib/jvm/default-java/man/man1/jarsigner.1.gz
+		sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/default-java/bin/java 2000 --slave /usr/share/man/man1/java.1.gz java.1.gz /usr/lib/jvm/default-java/jre/man/man1/java.1.gz
+		sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/default-java/bin/javac 2000 --slave /usr/share/man/man1/javac.1.gz javac.1.gz /usr/lib/jvm/default-java/man/man1/javac.1.gz
+		sudo update-alternatives --install /usr/bin/javadoc javadoc /usr/lib/jvm/default-java/bin/javadoc 2000 --slave /usr/share/man/man1/javadoc.1.gz javadoc.1.gz /usr/lib/jvm/default-java/man/man1/javadoc.1.gz
+		sudo update-alternatives --install /usr/bin/javah javah /usr/lib/jvm/default-java/bin/javah 2000 --slave /usr/share/man/man1/javah.1.gz javah.1.gz /usr/lib/jvm/default-java/man/man1/javah.1.gz
+		sudo update-alternatives --install /usr/bin/javap javap /usr/lib/jvm/default-java/bin/javap 2000 --slave /usr/share/man/man1/javap.1.gz javap.1.gz /usr/lib/jvm/default-java/man/man1/javap.1.gz
+		sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/default-java/jre/bin/javaws 2000 --slave /usr/share/man/man1/javaws.1.gz javaws.1.gz /usr/lib/jvm/default-java/jre/man/man1/javaws.1.gz
+		sudo update-alternatives --install /usr/bin/jcmd jcmd /usr/lib/jvm/default-java/bin/jcmd 2000 --slave /usr/share/man/man1/jcmd.1.gz jcmd.1.gz /usr/lib/jvm/default-java/man/man1/jcmd.1.gz
+		sudo update-alternatives --install /usr/bin/jconsole jconsole /usr/lib/jvm/default-java/bin/jconsole 2000 --slave /usr/share/man/man1/jconsole.1.gz jconsole.1.gz /usr/lib/jvm/default-java/man/man1/jconsole.1.gz
+		sudo update-alternatives --install /usr/bin/jdb jdb /usr/lib/jvm/default-java/bin/jdb 2000 --slave /usr/share/man/man1/jdb.1.gz jdb.1.gz /usr/lib/jvm/default-java/man/man1/jdb.1.gz
+		sudo update-alternatives --install /usr/bin/jexec jexec /usr/lib/jvm/default-java/jre/lib/jexec 2000 --slave /usr/share/binfmts/jar jexec-binfmt /usr/lib/jvm/default-java/jre/lib/jar.binfmt
+		sudo update-alternatives --install /usr/bin/jhat jhat /usr/lib/jvm/default-java/bin/jhat 2000 --slave /usr/share/man/man1/jhat.1.gz jhat.1.gz /usr/lib/jvm/default-java/man/man1/jhat.1.gz
+		sudo update-alternatives --install /usr/bin/jinfo jinfo /usr/lib/jvm/default-java/bin/jinfo 2000 --slave /usr/share/man/man1/jinfo.1.gz jinfo.1.gz /usr/lib/jvm/default-java/man/man1/jinfo.1.gz
+		sudo update-alternatives --install /usr/bin/jmap jmap /usr/lib/jvm/default-java/bin/jmap 2000 --slave /usr/share/man/man1/jmap.1.gz jmap.1.gz /usr/lib/jvm/default-java/man/man1/jmap.1.gz
+		sudo update-alternatives --install /usr/bin/jps jps /usr/lib/jvm/default-java/bin/jps 2000 --slave /usr/share/man/man1/jps.1.gz jps.1.gz /usr/lib/jvm/default-java/man/man1/jps.1.gz
+		sudo update-alternatives --install /usr/bin/jrunscript jrunscript /usr/lib/jvm/default-java/bin/jrunscript 2000 --slave /usr/share/man/man1/jrunscript.1.gz jrunscript.1.gz /usr/lib/jvm/default-java/man/man1/jrunscript.1.gz
+		sudo update-alternatives --install /usr/bin/jsadebugd jsadebugd /usr/lib/jvm/default-java/bin/jsadebugd 2000 --slave /usr/share/man/man1/jsadebugd.1.gz jsadebugd.1.gz /usr/lib/jvm/default-java/man/man1/jsadebugd.1.gz
+		sudo update-alternatives --install /usr/bin/jstack jstack /usr/lib/jvm/default-java/bin/jstack 2000 --slave /usr/share/man/man1/jstack.1.gz jstack.1.gz /usr/lib/jvm/default-java/man/man1/jstack.1.gz
+		sudo update-alternatives --install /usr/bin/jstat jstat /usr/lib/jvm/default-java/bin/jstat 2000 --slave /usr/share/man/man1/jstat.1.gz jstat.1.gz /usr/lib/jvm/default-java/man/man1/jstat.1.gz
+		sudo update-alternatives --install /usr/bin/jstatd jstatd /usr/lib/jvm/default-java/bin/jstatd 2000 --slave /usr/share/man/man1/jstatd.1.gz jstatd.1.gz /usr/lib/jvm/default-java/man/man1/jstatd.1.gz
+		sudo update-alternatives --install /usr/bin/keytool keytool /usr/lib/jvm/default-java/jre/bin/keytool 2000 --slave /usr/share/man/man1/keytool.1.gz keytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/keytool.1.gz
+		sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/default-java/jre/lib/amd64/IcedTeaPlugin.so 2000 
+		sudo update-alternatives --install /usr/bin/native2ascii native2ascii /usr/lib/jvm/default-java/bin/native2ascii 2000 --slave /usr/share/man/man1/native2ascii.1.gz native2ascii.1.gz /usr/lib/jvm/default-java/man/man1/native2ascii.1.gz
+		sudo update-alternatives --install /usr/bin/orbd orbd /usr/lib/jvm/default-java/jre/bin/orbd 2000 --slave /usr/share/man/man1/orbd.1.gz orbd.1.gz /usr/lib/jvm/default-java/jre/man/man1/orbd.1.gz
+		sudo update-alternatives --install /usr/bin/pack200 pack200 /usr/lib/jvm/default-java/jre/bin/pack200 2000 --slave /usr/share/man/man1/pack200.1.gz pack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/pack200.1.gz
+		sudo update-alternatives --install /usr/bin/policytool policytool /usr/lib/jvm/default-java/jre/bin/policytool 2000 --slave /usr/share/man/man1/policytool.1.gz policytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/policytool.1.gz
+		sudo update-alternatives --install /usr/bin/rmic rmic /usr/lib/jvm/default-java/bin/rmic 2000 --slave /usr/share/man/man1/rmic.1.gz rmic.1.gz /usr/lib/jvm/default-java/man/man1/rmic.1.gz
+		sudo update-alternatives --install /usr/bin/rmid rmid /usr/lib/jvm/default-java/jre/bin/rmid 2000 --slave /usr/share/man/man1/rmid.1.gz rmid.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmid.1.gz
+		sudo update-alternatives --install /usr/bin/rmiregistry rmiregistry /usr/lib/jvm/default-java/jre/bin/rmiregistry 2000 --slave /usr/share/man/man1/rmiregistry.1.gz rmiregistry.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmiregistry.1.gz
+		sudo update-alternatives --install /usr/bin/schemagen schemagen /usr/lib/jvm/default-java/bin/schemagen 2000 --slave /usr/share/man/man1/schemagen.1.gz schemagen.1.gz /usr/lib/jvm/default-java/man/man1/schemagen.1.gz
+		sudo update-alternatives --install /usr/bin/serialver serialver /usr/lib/jvm/default-java/bin/serialver 2000 --slave /usr/share/man/man1/serialver.1.gz serialver.1.gz /usr/lib/jvm/default-java/man/man1/serialver.1.gz
+		sudo update-alternatives --install /usr/bin/servertool servertool /usr/lib/jvm/default-java/jre/bin/servertool 2000 --slave /usr/share/man/man1/servertool.1.gz servertool.1.gz /usr/lib/jvm/default-java/jre/man/man1/servertool.1.gz
+		sudo update-alternatives --install /usr/bin/tnameserv tnameserv /usr/lib/jvm/default-java/jre/bin/tnameserv 2000 --slave /usr/share/man/man1/tnameserv.1.gz tnameserv.1.gz /usr/lib/jvm/default-java/jre/man/man1/tnameserv.1.gz
+		sudo update-alternatives --install /usr/bin/unpack200 unpack200 /usr/lib/jvm/default-java/jre/bin/unpack200 2000 --slave /usr/share/man/man1/unpack200.1.gz unpack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/unpack200.1.gz
+		sudo update-alternatives --install /usr/bin/wsgen wsgen /usr/lib/jvm/default-java/bin/wsgen 2000 --slave /usr/share/man/man1/wsgen.1.gz wsgen.1.gz /usr/lib/jvm/default-java/man/man1/wsgen.1.gz
+		sudo update-alternatives --install /usr/bin/wsimport wsimport /usr/lib/jvm/default-java/bin/wsimport 2000 --slave /usr/share/man/man1/wsimport.1.gz wsimport.1.gz /usr/lib/jvm/default-java/man/man1/wsimport.1.gz
+		sudo update-alternatives --install /usr/bin/xjc xjc /usr/lib/jvm/default-java/bin/xjc 2000 --slave /usr/share/man/man1/xjc.1.gz xjc.1.gz /usr/lib/jvm/default-java/man/man1/xjc.1.gz
+	fi
+
+fi
+
+## selection choice
+
+cur=$(readlink $ROOT/default-java)
+choices=()
+i=0
+
+echo "  Selection    Path"
+echo "----------------------------------------------"
+for f in $ROOT/*; do
+		f=$(basename $f)
+
+	if [ $f == "default-java" ]; then
+		continue
+	fi
+
+	if [ $cur ] && [ $cur == $f ]; then
+		echo "  $i [*]        $f"
+	else
+		echo "  $i            $f"
+	fi
+
+	choices+=($f)
+	i=$(($i+1))
+done
+
+echo
+echo "Press enter to keep the current choice, or type a slection number:"
+read selection
+
+if [ ! $selection ]; then
+	exit 0
+fi
+
+if [ "$selection" -ge "${#choices[@]}" ]; then
+	echo "Invalid selection"
+	exit 1
+fi
+
+jdk=${choices[$selection]}
+
+cd $ROOT
+
+if [ -d default-java ]; then
+	sudo unlink default-java
+fi
+
+sudo ln -s $jdk default-java
+
+echo
+java -version
