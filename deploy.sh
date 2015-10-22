@@ -85,3 +85,6 @@ deploy .bashrc
 deploy .zshrc
 deploy .aliases
 deploy .functions
+
+mkdir -p $HOME/bin
+ln -s $HOME/.dotfiles/bin/* $HOME/bin
