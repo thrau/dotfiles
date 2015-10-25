@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage() {
+    echo "$(basename $0) [ info | dep | bundle ]"
+}
+
+if [ ! -f "pom.xml" ]; then
+    echo "No pom.xml found in current working directory"
+    exit 1
+fi
+
+cmd=$1
+
+if [ ! $cmd ]; then cmd="info"; fi;
+
+case $cmd in
+    "info")     format=$'groupId:\t${project.groupId}\nartifactId:\t${project.artifactId}\nversion:\t${project.version}' ;;
+    "dep")      format=$'<dependency>\n\t<groupId>${project.groupId}</groupId>\n\t<artifactId>${project.artifactId}</artifactId>\n\t<version>${project.version}</version>\n</dependency>' ;;
+    "bundle")   format="mvn:\${project.groupId}/\${project.artifactId}/\${project.version}" ;;
+    *)          usage; exit 1;
+esac
+
+mvn -q -Dexec.executable="echo" -Dexec.args="$format" --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec
