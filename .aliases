@@ -59,6 +59,7 @@ alias 'mvij'='mvi idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
 alias 'mvj'='mvn idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
 alias 'mvcj'='mvn idea:clean'
 alias 'mvcij'='mvci idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
+alias 'mvfsit'='mvn failsafe:integration-test'
 
 # git
 alias 'ga'="git add"
