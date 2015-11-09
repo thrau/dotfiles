@@ -1,0 +1,19 @@
+<templateSet group="surround">
+  <template name="TM" value="long then = System.currentTimeMillis();&#10;$SELECTION$&#10;System.out.printf(&quot;took %d ms\n&quot;, System.currentTimeMillis() - then);" description="Surround with timer" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="NN" value="java.util.Objects.requireNonNull($SELECTION$)$END$" description="Surround with Objects.requireNonNull" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="true" />
+      <option name="COMPLETION" value="true" />
+    </context>
+  </template>
+</templateSet>
