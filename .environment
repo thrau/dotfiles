@@ -6,6 +6,8 @@ EDITOR='emacs -nw'
 
 # maven
 M2_HOME=/opt/maven
+MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+
 
 if [ -d "/sbin" ]; then
    PATH="/sbin:$PATH"
