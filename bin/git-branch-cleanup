@@ -1,0 +1,24 @@
+#!/bin/bash
+
+require_clean_work_tree () {
+    ## TODO
+}
+
+#require_clean_work_tree
+
+branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+
+if [ $branch != "master" ]; then
+    echo "please change into master"
+    exit 1
+fi
+
+git fetch --prune
+
+echo "Deleting merged local branches"
+for b in $(git branch --merged | cut -c3-); do
+    if [ $b == "master" ]; then
+	continue
+    fi
+    git branch -d $b
+done;
