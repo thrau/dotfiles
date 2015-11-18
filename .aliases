@@ -49,6 +49,7 @@ alias 'mvp'='mvn package -DskipTests'
 alias 'mvcp'='mvn clean package -DskipTests'
 alias 'mvag'='mvn archetype:generate'
 alias 'mvcs'='mvn checkstyle:checkstyle'
+alias 'mvqb'='mvcics -T 1C' # "quick build"
 ## maven goals with eclipse
 alias 'mvie'='mvi eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
 alias 'mve'='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
