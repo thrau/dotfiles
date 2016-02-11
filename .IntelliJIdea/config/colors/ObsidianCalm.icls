@@ -58,11 +58,6 @@
         <option name="FOREGROUND" value="e0e2e4" />
       </value>
     </option>
-    <option name="BASH.INTERNAL_COMMAND">
-      <value>
-        <option name="FOREGROUND" value="b0c95" />
-      </value>
-    </option>
     <option name="BREAKPOINT_ATTRIBUTES">
       <value>
         <option name="BACKGROUND" value="3a2323" />
@@ -449,6 +444,11 @@
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
+    <option name="GROOVY_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="93c763" />
+      </value>
+    </option>
     <option name="HYPERLINK_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="287bde" />
@@ -492,7 +492,7 @@
     </option>
     <option name="Instance property reference ID">
       <value>
-        <option name="FOREGROUND" value="660e7a" />
+        <option name="FOREGROUND" value="678cb1" />
       </value>
     </option>
     <option name="JAVAWICKETID">
@@ -506,6 +506,11 @@
     <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE" />
     <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER" />
     <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING" />
+    <option name="KOTLIN_ANNOTATION">
+      <value>
+        <option name="FOREGROUND" value="a082bd" />
+      </value>
+    </option>
     <option name="LOG_ERROR_OUTPUT">
       <value>
         <option name="FOREGROUND" value="93c763" />
@@ -614,6 +619,13 @@
     <option name="UNMATCHED_BRACE_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="d1243b" />
+      </value>
+    </option>
+    <option name="Unresolved reference access">
+      <value>
+        <option name="FOREGROUND" value="a2a2a2" />
+        <option name="EFFECT_COLOR" value="808080" />
+        <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="WARNING_ATTRIBUTES">
