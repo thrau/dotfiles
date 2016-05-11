@@ -238,6 +238,10 @@ trace() {
 	done
 }
 
+ssh-register() {
+	cat ~/.ssh/id_rsa.pub | ssh "$@" "cat >> ~/.ssh/authorized_keys"
+}
+
 ## recursive git
 rgit() {
 	for f in $(find -L -name .git -a -type d | sed "s/^\.\///"); do
