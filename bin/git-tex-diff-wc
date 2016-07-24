@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if ! which texcount > /dev/null; then
+    echo "fatal: It doesn't seem that you have texcount installed"
+    echo "Get it at http://app.uio.no/ifi/texcount/download.html and make sure it's available in the path as 'texcount'"
+    exit 1
+fi
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+	echo "fatal: Not a git repository"
+	exit 1
+fi
+if ! git diff -U0 **/*.tex > /dev/null 2>&1; then
+	echo "Apparently there are not .tex files in the diff, so zero words!"
+	exit 0
+fi
+
+tmpfile_add=$(mktemp)
+tmpfile_del=$(mktemp)
+
+git diff -U0 **/*.tex | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' > $tmpfile_add
+git diff -U0 **/*.tex | grep '^[-]' | grep -Ev '^(--- a/|\+\+\+ b/)' > $tmpfile_del
+
+n_add=$(texcount -1 $tmpfile_add | cut -d'+' -f1)
+n_del=$(texcount -1 $tmpfile_del | cut -d'+' -f1)
+
+churn=$(($n_add - $n_del))
+
+echo "You wrote $churn words!"
+
+rm $tmpfile_add
+rm $tmpfile_del
