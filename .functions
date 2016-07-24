@@ -169,6 +169,18 @@ chres() {
 	find $folder -type f -exec chmod 644 "{}" \;
 }
 
+ishostup() {
+	nmap -sP --host-timeout=250ms $1 | grep "Host is up" > /dev/null
+
+	if [ $? -eq 0 ]; then
+		echo "yes"
+		return 0
+	else
+		echo "no"
+		return 1
+	fi
+}
+
 # remap control to caps lock (remove capslock)
 rmcaps() {
 	xmodmap -e 'remove Lock = Caps_Lock'
