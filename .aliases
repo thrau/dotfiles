@@ -18,8 +18,6 @@ alias c=clear
 alias root="sudo -i"
 
 alias 'cd..'='cd ..'
-alias 'cd....'='cd ../..'
-alias 'cd......'='cd ../../..'
 alias 'cd..2'='cd ../..'
 alias 'cd..3'='cd ../../..'
 alias 'cd..4'='cd ../../../..'
@@ -84,7 +82,7 @@ alias 'gs.'="gs ."
 alias 'gsl'='git shortlog --pretty=format:"%Cgreen(%cr)%Creset - %s"'
 
 #quick rename tools
-alias gmv='qmv -f destination-only -e geany'
+alias gmv='qmv -f destination-only -e gedit'
 
 #gs merge
 alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
