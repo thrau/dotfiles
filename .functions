@@ -66,6 +66,15 @@ gcgh() {
 	fi
 }
 
+# "git diff word count" counts the words that were added or removed in a diff
+# useful for checking how much you thesis writing you got done
+gdwc() {
+	a=$(git diff "$@" | grep "^+" | wc -w)
+	d=$(git diff "$@" | grep "^-" | wc -w)
+
+	echo $(($a - $d))
+}
+
 ## initialise an empty git repository and commit a basic .gitignore
 ginit() {
 	if [ -d .git ]; then
