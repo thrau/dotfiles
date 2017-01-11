@@ -82,7 +82,7 @@ alias 'gs.'="gs ."
 alias 'gsl'='git shortlog --pretty=format:"%Cgreen(%cr)%Creset - %s"'
 
 #quick rename tools
-alias gmv='qmv -f destination-only -e gedit'
+alias gmv='qmv -f destination-only -e xed'
 
 #gs merge
 alias pdfmerge='ghostscript -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=pdfmerge.pdf'
