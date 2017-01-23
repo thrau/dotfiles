@@ -1,7 +1,5 @@
 # enable color support for ls and grep
 alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -48,16 +46,6 @@ alias 'mvcp'='mvn clean package -DskipTests'
 alias 'mvag'='mvn archetype:generate'
 alias 'mvcs'='mvn checkstyle:checkstyle'
 alias 'mvqb'='mvcics -T 1C' # "quick build"
-## maven goals with eclipse
-alias 'mvie'='mvi eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mve'='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mvce'='mvn eclipse:clean'
-alias 'mvcie'='mvci eclipse:eclipse -DdownloadSources=true -DdownloadJavadoc=true'
-## maven goals with intellij idea
-alias 'mvij'='mvi idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mvj'='mvn idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
-alias 'mvcj'='mvn idea:clean'
-alias 'mvcij'='mvci idea:idea -DdownloadSources=true -DdownloadJavadoc=true'
 alias 'mvfsit'='mvn failsafe:integration-test'
 
 # git
