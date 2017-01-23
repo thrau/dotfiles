@@ -95,3 +95,9 @@ alias swingjar='java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -jar'
 
 # assumes the last command was a build and notifies its status after its done
 alias build-notify='if [ $? = 0 ]; then notify-send -i "/usr/share/icons/gnome/32x32/status/weather-clear.png" "INFO" "Build success"; else notify-send -i "/usr/share/icons/gnome/32x32/status/weather-storm.png" "ERROR" "Build failed"; fi;'
+
+# ssh shorthands
+alias tilab='ssh trausch@ssh.tilab.tuwien.ac.at'
+alias apollo='ssh trausch@apollo.dslab.tuwien.ac.at'
+alias hydra='ssh trausch@hydra.infosys.tuwien.ac.at'
+alias dz='ssh thomas@divzero.at'
