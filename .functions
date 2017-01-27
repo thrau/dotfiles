@@ -280,3 +280,25 @@ alias rgs='rg status -sb'
 
 ## recursive git remote update
 alias rgru='rg remote update'
+
+
+## convert svgs to pdfs
+svg2pdf() {
+	IFS=$'\n'
+
+	for f in $*; do
+		bname=$(basename $f)
+		name=${bname%.*}
+
+		svg=$(dirname $f)/$name.svg
+		pdf=$(dirname $f)/$name.pdf
+
+		if [ $svg -ot $pdf ]; then
+			echo "skipping $svg"
+			continue
+		fi
+
+		echo "converting $svg -> $pdf"
+		inkscape -D -z --file="$svg" --export-pdf="$pdf"
+	done
+}
