@@ -47,6 +47,7 @@ alias 'mvag'='mvn archetype:generate'
 alias 'mvcs'='mvn checkstyle:checkstyle'
 alias 'mvqb'='mvcics -T 1C' # "quick build"
 alias 'mvfsit'='mvn failsafe:integration-test'
+alias 'mvds'='mvn dependency:sources'
 
 # git
 alias 'ga'="git add"
