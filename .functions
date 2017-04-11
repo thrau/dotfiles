@@ -302,3 +302,33 @@ svg2pdf() {
 		inkscape -D -z --file="$svg" --export-pdf="$pdf"
 	done
 }
+
+# runs basic pdflatex build
+texmake() {
+	t="$1"
+
+	if [ ! $t ] || [ ! -f $t ]; then
+		# try to find a single tex file
+		texs=(*.tex)
+
+		if [ 1 -eq "${#texs[@]}" ]; then
+			t="$texs"
+		elif [ 1 -lt "${#texs[@]}" ]; then
+			echo "${texs[@]}"
+			return 1
+		fi
+	fi
+
+	if [ ! $t ] || [ ! -f $t ]; then
+		echo "Could not find a target tex file"
+		return 1
+	fi
+
+	fname=${t%.tex}
+
+	pdflatex $fname
+	bibtex $fname
+	pdflatex $fname
+	pdflatex $fname
+
+}

@@ -90,3 +90,6 @@ alias tilab='ssh trausch@ssh.tilab.tuwien.ac.at'
 alias apollo='ssh trausch@apollo.dslab.tuwien.ac.at'
 alias hydra='ssh trausch@hydra.infosys.tuwien.ac.at'
 alias dz='ssh thomas@divzero.at'
+
+# various
+alias texclean='rm -f *.aux *.log *.blg *.bbl *.synctex.gz'
