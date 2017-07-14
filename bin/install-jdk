@@ -1,0 +1,41 @@
+#!/bin/bash
+
+sudo -v
+cd /tmp
+
+ARCH=$(arch)
+
+if [[ $ARCH =~ "x86_64" ]]; then
+    archive="jdk-8u131-linux-x64.tar.gz"
+elif [[ $ARCH =~ "armv8" ]]; then
+    archive="jdk-8u131-linux-arm64-vfp-hflt.tar.gz"
+elif [[ $ARCH =~ "armv7l" ]]; then
+    archive="jdk-8u131-linux-arm32-vfp-hflt.tar.gz"
+else
+    echo "Unknown architecture $ARCH"
+    exit 1
+fi
+
+dname="jdk1.8.0_131"
+url="http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/$archive"
+
+
+if [ -d "/usr/lib/jvm/${dname}" ]; then
+    echo "/usr/lib/jvm/${dname} exists!"
+    exit 1
+fi
+
+if [ -d ${dname} ]; then
+    sudo rm -rf ${dname}
+fi
+
+if [ ! -f ${archive} ]; then
+    sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${url}
+fi
+
+sudo tar xzf ${archive}
+
+[ -d /usr/lib/jvm ] || sudo mkdir -p /usr/lib/jvm
+
+sudo mv "${dname}" /usr/lib/jvm
+sudo rm -f "${archive}"
