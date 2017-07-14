@@ -3,10 +3,10 @@ TZ='Europe/Vienna'
 
 # locale, as this one is known on most servers, and en_GB is not, but may cause warnings
 # http://stackoverflow.com/questions/2499794
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_TYPE=en_US.UTF-8
+#export LANGUAGE=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
+#export LANG=en_US.UTF-8
+#export LC_TYPE=en_US.UTF-8
 
 
 # set default editor
