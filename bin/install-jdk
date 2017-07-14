@@ -39,3 +39,6 @@ sudo tar xzf ${archive}
 
 sudo mv "${dname}" /usr/lib/jvm
 sudo rm -f "${archive}"
+
+# create initial link if it does not exist (to make change-jdk work)
+[ -L /usr/lib/jvm/default-java ] || sudo ln -s /usr/lib/jvm/${dname} /usr/lib/jvm/default-java
