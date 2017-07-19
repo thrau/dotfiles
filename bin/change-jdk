@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------
 # change-jdk
-# Version 0.1
+# Version 0.2
 # Author: Thomas Rausch <thomas@rauschig.org>
 #
 # This script maintains a set of jdk version placed in /usr/lib/jvm.
@@ -13,6 +13,12 @@
 #
 # Licensed under WTFPL (http://www.wtfpl.net/)
 # -----------------------------------------------------------------------------
+
+if [ ! -d "/usr/lib/jvm/default-java" ]; then
+    echo "[ERROR]: /usr/lib/jvm/default-java does not exist"
+    echo "Please link a JDK installation to /usr/lib/jvm/default-java"
+    exit 1;
+fi
 
 ## need to be root for this
 sudo -v
