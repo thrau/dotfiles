@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if ! which openconnect &> /dev/null; then
+    echo "fataul: It appears you don't have openconnect installed."
+    exit 1
+fi
+
+sudo -v
+
+echo -n "Please enter your username: "
+read user
+
+echo -n "Password for $user: "
+read -s pw
+
+echo "Alles_getunnelt
+$pw
+$user
+$pw
+" | sudo openconnect --user $user https://vpn.tuwien.ac.at
