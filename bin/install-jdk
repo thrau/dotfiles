@@ -6,18 +6,18 @@ cd /tmp
 ARCH=$(arch)
 
 if [[ $ARCH =~ "x86_64" ]]; then
-    archive="jdk-8u131-linux-x64.tar.gz"
+    archive="jdk-8u144-linux-x64.tar.gz"
 elif [[ $ARCH =~ "armv8" ]]; then
-    archive="jdk-8u131-linux-arm64-vfp-hflt.tar.gz"
+    archive="jdk-8u144-linux-arm64-vfp-hflt.tar.gz"
 elif [[ $ARCH =~ "armv7l" ]]; then
-    archive="jdk-8u131-linux-arm32-vfp-hflt.tar.gz"
+    archive="jdk-8u144-linux-arm32-vfp-hflt.tar.gz"
 else
     echo "Unknown architecture $ARCH"
     exit 1
 fi
 
-dname="jdk1.8.0_131"
-url="http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/$archive"
+dname="jdk1.8.0_144"
+url="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/$archive"
 
 
 if [ -d "/usr/lib/jvm/${dname}" ]; then
