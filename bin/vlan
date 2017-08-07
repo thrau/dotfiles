@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Create variable amount of virtual eth devices and assign them corresponding
+# ip addresses in the 10.42.0.0 network.
+# requires vde2
+
+ADDR_PREFIX=10.42.0
+
+main() {
+    if ! which vde_switch > /dev/null; then
+        echo "vde_switch command not found"
+        echo "is vde2 installed?"
+        exit 1
+    fi
+
+    sudo -v
+
+    case $1 in
+        ("up")     vlan_up $2  ;;
+        ("down")   vlan_down   ;;
+        ("status") vlan_status ;;
+        (*) echo "$0: usage: [up <n>]| down | status]"
+    esac
+}
+
+vlan_ls() {
+    ip addr | egrep -A 3 "tap[0-9]" | grep inet | awk '{ printf "%s %s\n", $5, $2 }'
+}
+
+vlan_status() {
+    if pgrep vde_switch >/dev/null; then
+        echo "running ($(pgrep vde_switch))"
+        vlan_ls
+    else
+        echo "not running"
+    fi
+}
+
+vlan_up() {
+    if pgrep vde_switch >/dev/null; then
+        echo "already running"
+        exit 1;
+    fi
+
+    if [ ! $1 ]; then
+        echo "how many devices?"
+        exit 1;
+    fi
+
+    n=$((($1-1)))
+
+    taps=$(for x in `seq 0 $n`; do echo "-tap tap$x"; done)
+
+    sudo vde_switch -daemon ${taps}
+    pid=$!
+
+    for x in `seq 0 $n`; do
+        sudo ip addr add ${ADDR_PREFIX}.$(($x+1)) dev tap${x}
+    done
+
+    vlan_status
+}
+
+vlan_down() {
+    if ! pgrep vde_switch >/dev/null; then
+        echo "not running"
+        exit 1;
+    fi
+
+    sudo pkill vde_switch;
+}
+
+main $@
