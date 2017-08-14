@@ -332,3 +332,8 @@ texmake() {
 	pdflatex $fname
 
 }
+
+xclip-clear() {
+    echo -n | xclip
+    echo -n | xclip -selection clipboard
+}
