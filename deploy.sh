@@ -85,6 +85,7 @@ deploy .bashrc
 deploy .zshrc
 deploy .aliases
 deploy .functions
+deploy .tmux.conf
 
 mkdir -p $HOME/bin
 ln -s $HOME/.dotfiles/bin/* $HOME/bin
