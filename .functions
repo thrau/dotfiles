@@ -259,8 +259,21 @@ trace() {
 	done
 }
 
+## copies the given ssh key (or ~/.ssh/id_rsa.pub if none is given) to the given server location
 ssh-register() {
-	cat ~/.ssh/id_rsa.pub | ssh "$@" "[ -d ~/.ssh ] || mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
+	if [ -f $1 ]; then
+		key=$1
+		shift
+	else
+		key="~/.ssh/id_rsa.pub"
+	fi
+
+	if [ ! -f $key ]; then
+		echo "$key not found"
+		return 1
+	fi
+
+	cat $key | ssh "$@" "[ -d ~/.ssh ] || mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
 }
 
 ## recursive git
