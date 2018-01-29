@@ -87,5 +87,6 @@ deploy .aliases
 deploy .functions
 deploy .tmux.conf
 
+echo "deploying ~/bin scripts"
 mkdir -p $HOME/bin
-ln -s $HOME/.dotfiles/bin/* $HOME/bin
+ln -sf $HOME/.dotfiles/bin/* $HOME/bin
