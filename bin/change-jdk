@@ -39,48 +39,48 @@ if [ $? != 0 ]; then
 	read yn
 
 	if [[ $yn == "y" ]]; then
-		sudo update-alternatives --install /usr/bin/appletviewer appletviewer /usr/lib/jvm/default-java/bin/appletviewer 1000 --slave /usr/share/man/man1/appletviewer.1.gz appletviewer.1.gz /usr/lib/jvm/default-java/man/man1/appletviewer.1.gz
-		sudo update-alternatives --install /usr/bin/extcheck extcheck /usr/lib/jvm/default-java/bin/extcheck 1000 --slave /usr/share/man/man1/extcheck.1.gz extcheck.1.gz /usr/lib/jvm/default-java/man/man1/extcheck.1.gz
-		sudo update-alternatives --install /usr/bin/idlj idlj /usr/lib/jvm/default-java/bin/idlj 1000 --slave /usr/share/man/man1/idlj.1.gz idlj.1.gz /usr/lib/jvm/default-java/man/man1/idlj.1.gz
-		sudo update-alternatives --install /usr/bin/itweb-settings itweb-settings /usr/lib/jvm/default-java/jre/bin/itweb-settings 1000 --slave /usr/share/man/man1/itweb-settings.1.gz itweb-settings.1.gz /usr/lib/jvm/default-java/jre/man/man1/itweb-settings.1.gz
-		sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/default-java/bin/jar 1000 --slave /usr/share/man/man1/jar.1.gz jar.1.gz /usr/lib/jvm/default-java/man/man1/jar.1.gz
-		sudo update-alternatives --install /usr/bin/jarsigner jarsigner /usr/lib/jvm/default-java/bin/jarsigner 1000 --slave /usr/share/man/man1/jarsigner.1.gz jarsigner.1.gz /usr/lib/jvm/default-java/man/man1/jarsigner.1.gz
-		sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/default-java/bin/java 1000 --slave /usr/share/man/man1/java.1.gz java.1.gz /usr/lib/jvm/default-java/jre/man/man1/java.1.gz
-		sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/default-java/bin/javac 1000 --slave /usr/share/man/man1/javac.1.gz javac.1.gz /usr/lib/jvm/default-java/man/man1/javac.1.gz
-		sudo update-alternatives --install /usr/bin/javadoc javadoc /usr/lib/jvm/default-java/bin/javadoc 1000 --slave /usr/share/man/man1/javadoc.1.gz javadoc.1.gz /usr/lib/jvm/default-java/man/man1/javadoc.1.gz
-		sudo update-alternatives --install /usr/bin/javah javah /usr/lib/jvm/default-java/bin/javah 1000 --slave /usr/share/man/man1/javah.1.gz javah.1.gz /usr/lib/jvm/default-java/man/man1/javah.1.gz
-		sudo update-alternatives --install /usr/bin/javap javap /usr/lib/jvm/default-java/bin/javap 1000 --slave /usr/share/man/man1/javap.1.gz javap.1.gz /usr/lib/jvm/default-java/man/man1/javap.1.gz
-		sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/default-java/jre/bin/javaws 1000 --slave /usr/share/man/man1/javaws.1.gz javaws.1.gz /usr/lib/jvm/default-java/jre/man/man1/javaws.1.gz
-		sudo update-alternatives --install /usr/bin/jcmd jcmd /usr/lib/jvm/default-java/bin/jcmd 1000 --slave /usr/share/man/man1/jcmd.1.gz jcmd.1.gz /usr/lib/jvm/default-java/man/man1/jcmd.1.gz
-		sudo update-alternatives --install /usr/bin/jconsole jconsole /usr/lib/jvm/default-java/bin/jconsole 1000 --slave /usr/share/man/man1/jconsole.1.gz jconsole.1.gz /usr/lib/jvm/default-java/man/man1/jconsole.1.gz
-		sudo update-alternatives --install /usr/bin/jdb jdb /usr/lib/jvm/default-java/bin/jdb 1000 --slave /usr/share/man/man1/jdb.1.gz jdb.1.gz /usr/lib/jvm/default-java/man/man1/jdb.1.gz
-		sudo update-alternatives --install /usr/bin/jexec jexec /usr/lib/jvm/default-java/jre/lib/jexec 1000 --slave /usr/share/binfmts/jar jexec-binfmt /usr/lib/jvm/default-java/jre/lib/jar.binfmt
-		sudo update-alternatives --install /usr/bin/jhat jhat /usr/lib/jvm/default-java/bin/jhat 1000 --slave /usr/share/man/man1/jhat.1.gz jhat.1.gz /usr/lib/jvm/default-java/man/man1/jhat.1.gz
-		sudo update-alternatives --install /usr/bin/jinfo jinfo /usr/lib/jvm/default-java/bin/jinfo 1000 --slave /usr/share/man/man1/jinfo.1.gz jinfo.1.gz /usr/lib/jvm/default-java/man/man1/jinfo.1.gz
-		sudo update-alternatives --install /usr/bin/jmap jmap /usr/lib/jvm/default-java/bin/jmap 1000 --slave /usr/share/man/man1/jmap.1.gz jmap.1.gz /usr/lib/jvm/default-java/man/man1/jmap.1.gz
-		sudo update-alternatives --install /usr/bin/jps jps /usr/lib/jvm/default-java/bin/jps 1000 --slave /usr/share/man/man1/jps.1.gz jps.1.gz /usr/lib/jvm/default-java/man/man1/jps.1.gz
-		sudo update-alternatives --install /usr/bin/jrunscript jrunscript /usr/lib/jvm/default-java/bin/jrunscript 1000 --slave /usr/share/man/man1/jrunscript.1.gz jrunscript.1.gz /usr/lib/jvm/default-java/man/man1/jrunscript.1.gz
-		sudo update-alternatives --install /usr/bin/jsadebugd jsadebugd /usr/lib/jvm/default-java/bin/jsadebugd 1000 --slave /usr/share/man/man1/jsadebugd.1.gz jsadebugd.1.gz /usr/lib/jvm/default-java/man/man1/jsadebugd.1.gz
-		sudo update-alternatives --install /usr/bin/jstack jstack /usr/lib/jvm/default-java/bin/jstack 1000 --slave /usr/share/man/man1/jstack.1.gz jstack.1.gz /usr/lib/jvm/default-java/man/man1/jstack.1.gz
-		sudo update-alternatives --install /usr/bin/jstat jstat /usr/lib/jvm/default-java/bin/jstat 1000 --slave /usr/share/man/man1/jstat.1.gz jstat.1.gz /usr/lib/jvm/default-java/man/man1/jstat.1.gz
-		sudo update-alternatives --install /usr/bin/jstatd jstatd /usr/lib/jvm/default-java/bin/jstatd 1000 --slave /usr/share/man/man1/jstatd.1.gz jstatd.1.gz /usr/lib/jvm/default-java/man/man1/jstatd.1.gz
-		sudo update-alternatives --install /usr/bin/keytool keytool /usr/lib/jvm/default-java/jre/bin/keytool 1000 --slave /usr/share/man/man1/keytool.1.gz keytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/keytool.1.gz
-		sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/default-java/jre/lib/amd64/IcedTeaPlugin.so 1000 
-		sudo update-alternatives --install /usr/bin/native2ascii native2ascii /usr/lib/jvm/default-java/bin/native2ascii 1000 --slave /usr/share/man/man1/native2ascii.1.gz native2ascii.1.gz /usr/lib/jvm/default-java/man/man1/native2ascii.1.gz
-		sudo update-alternatives --install /usr/bin/orbd orbd /usr/lib/jvm/default-java/jre/bin/orbd 1000 --slave /usr/share/man/man1/orbd.1.gz orbd.1.gz /usr/lib/jvm/default-java/jre/man/man1/orbd.1.gz
-		sudo update-alternatives --install /usr/bin/pack200 pack200 /usr/lib/jvm/default-java/jre/bin/pack200 1000 --slave /usr/share/man/man1/pack200.1.gz pack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/pack200.1.gz
-		sudo update-alternatives --install /usr/bin/policytool policytool /usr/lib/jvm/default-java/jre/bin/policytool 1000 --slave /usr/share/man/man1/policytool.1.gz policytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/policytool.1.gz
-		sudo update-alternatives --install /usr/bin/rmic rmic /usr/lib/jvm/default-java/bin/rmic 1000 --slave /usr/share/man/man1/rmic.1.gz rmic.1.gz /usr/lib/jvm/default-java/man/man1/rmic.1.gz
-		sudo update-alternatives --install /usr/bin/rmid rmid /usr/lib/jvm/default-java/jre/bin/rmid 1000 --slave /usr/share/man/man1/rmid.1.gz rmid.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmid.1.gz
-		sudo update-alternatives --install /usr/bin/rmiregistry rmiregistry /usr/lib/jvm/default-java/jre/bin/rmiregistry 1000 --slave /usr/share/man/man1/rmiregistry.1.gz rmiregistry.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmiregistry.1.gz
-		sudo update-alternatives --install /usr/bin/schemagen schemagen /usr/lib/jvm/default-java/bin/schemagen 1000 --slave /usr/share/man/man1/schemagen.1.gz schemagen.1.gz /usr/lib/jvm/default-java/man/man1/schemagen.1.gz
-		sudo update-alternatives --install /usr/bin/serialver serialver /usr/lib/jvm/default-java/bin/serialver 1000 --slave /usr/share/man/man1/serialver.1.gz serialver.1.gz /usr/lib/jvm/default-java/man/man1/serialver.1.gz
-		sudo update-alternatives --install /usr/bin/servertool servertool /usr/lib/jvm/default-java/jre/bin/servertool 1000 --slave /usr/share/man/man1/servertool.1.gz servertool.1.gz /usr/lib/jvm/default-java/jre/man/man1/servertool.1.gz
-		sudo update-alternatives --install /usr/bin/tnameserv tnameserv /usr/lib/jvm/default-java/jre/bin/tnameserv 1000 --slave /usr/share/man/man1/tnameserv.1.gz tnameserv.1.gz /usr/lib/jvm/default-java/jre/man/man1/tnameserv.1.gz
-		sudo update-alternatives --install /usr/bin/unpack200 unpack200 /usr/lib/jvm/default-java/jre/bin/unpack200 1000 --slave /usr/share/man/man1/unpack200.1.gz unpack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/unpack200.1.gz
-		sudo update-alternatives --install /usr/bin/wsgen wsgen /usr/lib/jvm/default-java/bin/wsgen 1000 --slave /usr/share/man/man1/wsgen.1.gz wsgen.1.gz /usr/lib/jvm/default-java/man/man1/wsgen.1.gz
-		sudo update-alternatives --install /usr/bin/wsimport wsimport /usr/lib/jvm/default-java/bin/wsimport 1000 --slave /usr/share/man/man1/wsimport.1.gz wsimport.1.gz /usr/lib/jvm/default-java/man/man1/wsimport.1.gz
-		sudo update-alternatives --install /usr/bin/xjc xjc /usr/lib/jvm/default-java/bin/xjc 1000 --slave /usr/share/man/man1/xjc.1.gz xjc.1.gz /usr/lib/jvm/default-java/man/man1/xjc.1.gz
+		sudo update-alternatives --install /usr/bin/appletviewer appletviewer /usr/lib/jvm/default-java/bin/appletviewer 10000000 --slave /usr/share/man/man1/appletviewer.1.gz appletviewer.1.gz /usr/lib/jvm/default-java/man/man1/appletviewer.1.gz
+		sudo update-alternatives --install /usr/bin/extcheck extcheck /usr/lib/jvm/default-java/bin/extcheck 10000000 --slave /usr/share/man/man1/extcheck.1.gz extcheck.1.gz /usr/lib/jvm/default-java/man/man1/extcheck.1.gz
+		sudo update-alternatives --install /usr/bin/idlj idlj /usr/lib/jvm/default-java/bin/idlj 10000000 --slave /usr/share/man/man1/idlj.1.gz idlj.1.gz /usr/lib/jvm/default-java/man/man1/idlj.1.gz
+		sudo update-alternatives --install /usr/bin/itweb-settings itweb-settings /usr/lib/jvm/default-java/jre/bin/itweb-settings 10000000 --slave /usr/share/man/man1/itweb-settings.1.gz itweb-settings.1.gz /usr/lib/jvm/default-java/jre/man/man1/itweb-settings.1.gz
+		sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/default-java/bin/jar 10000000 --slave /usr/share/man/man1/jar.1.gz jar.1.gz /usr/lib/jvm/default-java/man/man1/jar.1.gz
+		sudo update-alternatives --install /usr/bin/jarsigner jarsigner /usr/lib/jvm/default-java/bin/jarsigner 10000000 --slave /usr/share/man/man1/jarsigner.1.gz jarsigner.1.gz /usr/lib/jvm/default-java/man/man1/jarsigner.1.gz
+		sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/default-java/bin/java 10000000 --slave /usr/share/man/man1/java.1.gz java.1.gz /usr/lib/jvm/default-java/jre/man/man1/java.1.gz
+		sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/default-java/bin/javac 10000000 --slave /usr/share/man/man1/javac.1.gz javac.1.gz /usr/lib/jvm/default-java/man/man1/javac.1.gz
+		sudo update-alternatives --install /usr/bin/javadoc javadoc /usr/lib/jvm/default-java/bin/javadoc 10000000 --slave /usr/share/man/man1/javadoc.1.gz javadoc.1.gz /usr/lib/jvm/default-java/man/man1/javadoc.1.gz
+		sudo update-alternatives --install /usr/bin/javah javah /usr/lib/jvm/default-java/bin/javah 10000000 --slave /usr/share/man/man1/javah.1.gz javah.1.gz /usr/lib/jvm/default-java/man/man1/javah.1.gz
+		sudo update-alternatives --install /usr/bin/javap javap /usr/lib/jvm/default-java/bin/javap 10000000 --slave /usr/share/man/man1/javap.1.gz javap.1.gz /usr/lib/jvm/default-java/man/man1/javap.1.gz
+		sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/default-java/jre/bin/javaws 10000000 --slave /usr/share/man/man1/javaws.1.gz javaws.1.gz /usr/lib/jvm/default-java/jre/man/man1/javaws.1.gz
+		sudo update-alternatives --install /usr/bin/jcmd jcmd /usr/lib/jvm/default-java/bin/jcmd 10000000 --slave /usr/share/man/man1/jcmd.1.gz jcmd.1.gz /usr/lib/jvm/default-java/man/man1/jcmd.1.gz
+		sudo update-alternatives --install /usr/bin/jconsole jconsole /usr/lib/jvm/default-java/bin/jconsole 10000000 --slave /usr/share/man/man1/jconsole.1.gz jconsole.1.gz /usr/lib/jvm/default-java/man/man1/jconsole.1.gz
+		sudo update-alternatives --install /usr/bin/jdb jdb /usr/lib/jvm/default-java/bin/jdb 10000000 --slave /usr/share/man/man1/jdb.1.gz jdb.1.gz /usr/lib/jvm/default-java/man/man1/jdb.1.gz
+		sudo update-alternatives --install /usr/bin/jexec jexec /usr/lib/jvm/default-java/jre/lib/jexec 10000000 --slave /usr/share/binfmts/jar jexec-binfmt /usr/lib/jvm/default-java/jre/lib/jar.binfmt
+		sudo update-alternatives --install /usr/bin/jhat jhat /usr/lib/jvm/default-java/bin/jhat 10000000 --slave /usr/share/man/man1/jhat.1.gz jhat.1.gz /usr/lib/jvm/default-java/man/man1/jhat.1.gz
+		sudo update-alternatives --install /usr/bin/jinfo jinfo /usr/lib/jvm/default-java/bin/jinfo 10000000 --slave /usr/share/man/man1/jinfo.1.gz jinfo.1.gz /usr/lib/jvm/default-java/man/man1/jinfo.1.gz
+		sudo update-alternatives --install /usr/bin/jmap jmap /usr/lib/jvm/default-java/bin/jmap 10000000 --slave /usr/share/man/man1/jmap.1.gz jmap.1.gz /usr/lib/jvm/default-java/man/man1/jmap.1.gz
+		sudo update-alternatives --install /usr/bin/jps jps /usr/lib/jvm/default-java/bin/jps 10000000 --slave /usr/share/man/man1/jps.1.gz jps.1.gz /usr/lib/jvm/default-java/man/man1/jps.1.gz
+		sudo update-alternatives --install /usr/bin/jrunscript jrunscript /usr/lib/jvm/default-java/bin/jrunscript 10000000 --slave /usr/share/man/man1/jrunscript.1.gz jrunscript.1.gz /usr/lib/jvm/default-java/man/man1/jrunscript.1.gz
+		sudo update-alternatives --install /usr/bin/jsadebugd jsadebugd /usr/lib/jvm/default-java/bin/jsadebugd 10000000 --slave /usr/share/man/man1/jsadebugd.1.gz jsadebugd.1.gz /usr/lib/jvm/default-java/man/man1/jsadebugd.1.gz
+		sudo update-alternatives --install /usr/bin/jstack jstack /usr/lib/jvm/default-java/bin/jstack 10000000 --slave /usr/share/man/man1/jstack.1.gz jstack.1.gz /usr/lib/jvm/default-java/man/man1/jstack.1.gz
+		sudo update-alternatives --install /usr/bin/jstat jstat /usr/lib/jvm/default-java/bin/jstat 10000000 --slave /usr/share/man/man1/jstat.1.gz jstat.1.gz /usr/lib/jvm/default-java/man/man1/jstat.1.gz
+		sudo update-alternatives --install /usr/bin/jstatd jstatd /usr/lib/jvm/default-java/bin/jstatd 10000000 --slave /usr/share/man/man1/jstatd.1.gz jstatd.1.gz /usr/lib/jvm/default-java/man/man1/jstatd.1.gz
+		sudo update-alternatives --install /usr/bin/keytool keytool /usr/lib/jvm/default-java/jre/bin/keytool 10000000 --slave /usr/share/man/man1/keytool.1.gz keytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/keytool.1.gz
+		sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/default-java/jre/lib/amd64/IcedTeaPlugin.so 10000000
+		sudo update-alternatives --install /usr/bin/native2ascii native2ascii /usr/lib/jvm/default-java/bin/native2ascii 10000000 --slave /usr/share/man/man1/native2ascii.1.gz native2ascii.1.gz /usr/lib/jvm/default-java/man/man1/native2ascii.1.gz
+		sudo update-alternatives --install /usr/bin/orbd orbd /usr/lib/jvm/default-java/jre/bin/orbd 10000000 --slave /usr/share/man/man1/orbd.1.gz orbd.1.gz /usr/lib/jvm/default-java/jre/man/man1/orbd.1.gz
+		sudo update-alternatives --install /usr/bin/pack200 pack200 /usr/lib/jvm/default-java/jre/bin/pack200 10000000 --slave /usr/share/man/man1/pack200.1.gz pack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/pack200.1.gz
+		sudo update-alternatives --install /usr/bin/policytool policytool /usr/lib/jvm/default-java/jre/bin/policytool 10000000 --slave /usr/share/man/man1/policytool.1.gz policytool.1.gz /usr/lib/jvm/default-java/jre/man/man1/policytool.1.gz
+		sudo update-alternatives --install /usr/bin/rmic rmic /usr/lib/jvm/default-java/bin/rmic 10000000 --slave /usr/share/man/man1/rmic.1.gz rmic.1.gz /usr/lib/jvm/default-java/man/man1/rmic.1.gz
+		sudo update-alternatives --install /usr/bin/rmid rmid /usr/lib/jvm/default-java/jre/bin/rmid 10000000 --slave /usr/share/man/man1/rmid.1.gz rmid.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmid.1.gz
+		sudo update-alternatives --install /usr/bin/rmiregistry rmiregistry /usr/lib/jvm/default-java/jre/bin/rmiregistry 10000000 --slave /usr/share/man/man1/rmiregistry.1.gz rmiregistry.1.gz /usr/lib/jvm/default-java/jre/man/man1/rmiregistry.1.gz
+		sudo update-alternatives --install /usr/bin/schemagen schemagen /usr/lib/jvm/default-java/bin/schemagen 10000000 --slave /usr/share/man/man1/schemagen.1.gz schemagen.1.gz /usr/lib/jvm/default-java/man/man1/schemagen.1.gz
+		sudo update-alternatives --install /usr/bin/serialver serialver /usr/lib/jvm/default-java/bin/serialver 10000000 --slave /usr/share/man/man1/serialver.1.gz serialver.1.gz /usr/lib/jvm/default-java/man/man1/serialver.1.gz
+		sudo update-alternatives --install /usr/bin/servertool servertool /usr/lib/jvm/default-java/jre/bin/servertool 10000000 --slave /usr/share/man/man1/servertool.1.gz servertool.1.gz /usr/lib/jvm/default-java/jre/man/man1/servertool.1.gz
+		sudo update-alternatives --install /usr/bin/tnameserv tnameserv /usr/lib/jvm/default-java/jre/bin/tnameserv 10000000 --slave /usr/share/man/man1/tnameserv.1.gz tnameserv.1.gz /usr/lib/jvm/default-java/jre/man/man1/tnameserv.1.gz
+		sudo update-alternatives --install /usr/bin/unpack200 unpack200 /usr/lib/jvm/default-java/jre/bin/unpack200 10000000 --slave /usr/share/man/man1/unpack200.1.gz unpack200.1.gz /usr/lib/jvm/default-java/jre/man/man1/unpack200.1.gz
+		sudo update-alternatives --install /usr/bin/wsgen wsgen /usr/lib/jvm/default-java/bin/wsgen 10000000 --slave /usr/share/man/man1/wsgen.1.gz wsgen.1.gz /usr/lib/jvm/default-java/man/man1/wsgen.1.gz
+		sudo update-alternatives --install /usr/bin/wsimport wsimport /usr/lib/jvm/default-java/bin/wsimport 10000000 --slave /usr/share/man/man1/wsimport.1.gz wsimport.1.gz /usr/lib/jvm/default-java/man/man1/wsimport.1.gz
+		sudo update-alternatives --install /usr/bin/xjc xjc /usr/lib/jvm/default-java/bin/xjc 10000000 --slave /usr/share/man/man1/xjc.1.gz xjc.1.gz /usr/lib/jvm/default-java/man/man1/xjc.1.gz
 	fi
 
 fi
