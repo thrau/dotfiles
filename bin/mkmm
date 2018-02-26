@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# mkmm - make maven module
+
+if [ ! -f "pom.xml" ]; then
+    echo "No parent pom.xml found in current working directory"
+    exit 1
+fi
+
+if [ ! $1 ]; then
+	echo "specify a module"
+	exit 1
+fi
+
+module=$1
+
+if [ -f $module/pom.xml ]; then
+	echo "module exists"
+	exit 1
+fi
+
+parentinfo=$(mvn-info bundle | cut -c 5-)
+
+#parentinfo="at.ac.tuwien.infosys.dst/dst-impl/2018.0.1-SNAPSHOT"
+
+IFS='/' read -a attribs <<< "${parentinfo}"
+
+mkdir -p ${module}
+
+	cat <<EOF > ${module}/pom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>${attribs[0]}</groupId>
+    <artifactId>${attribs[1]}</artifactId>
+    <version>${attribs[2]}</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <artifactId>${module}</artifactId>
+
+  <packaging>jar</packaging>
+
+</project>
+EOF
+
+mkdir -p ${module}/src/main/java
+mkdir -p ${module}/src/main/resources
+mkdir -p ${module}/src/test/java
+mkdir -p ${module}/src/test/resources
