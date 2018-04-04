@@ -265,7 +265,7 @@ ssh-register() {
 		key=$1
 		shift
 	else
-		key="~/.ssh/id_rsa.pub"
+		key="$HOME/.ssh/id_rsa.pub"
 	fi
 
 	if [ ! -f $key ]; then
