@@ -94,3 +94,5 @@ alias dz='ssh thomas@divzero.at'
 # various
 alias texclean='rm -f *.aux *.log *.blg *.bbl *.synctex.gz'
 alias dus='du -h --max-depth=1 | sort -rh'
+alias ipwan='dig +short myip.opendns.com @resolver1.opendns.com'
+
