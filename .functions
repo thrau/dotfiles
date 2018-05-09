@@ -350,3 +350,20 @@ xclip-clear() {
     echo -n | xclip
     echo -n | xclip -selection clipboard
 }
+
+imgscale() {
+	factor=$1
+	shift
+
+	for img in "$@"; do
+		width=$(identify -format "%w" "${img}")
+		nwdith=$(( $factor * $width ))
+		nwdith=$(printf "%.0f" "${nwdith}")
+
+		ext=${img##*.}
+		fname=$(basename $img ".$ext")
+		nfname="${fname}_scaled.${ext}"
+
+		convert ${img} -resize ${nwdith} -quality 95 ${nfname}
+	done
+}
