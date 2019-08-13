@@ -23,6 +23,7 @@ alias 'cd..4'='cd ../../../..'
 alias e='emacs -nw' # -fg white -bg black'
 alias se='sudo emacs -nw -fg white -bg black'
 
+alias please='sudo $(fc -ln -1)'
 alias powerdown='sudo shutdown -h now'
 alias pd=powerdown
 alias reboot='sudo reboot'
