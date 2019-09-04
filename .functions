@@ -367,3 +367,29 @@ imgscale() {
 		convert ${img} -resize ${nwdith} -quality 95 ${nfname}
 	done
 }
+
+ssh-forward() {
+	# ssh-forward user@remote.com 8080 7700:5000 ...
+
+	export host=$1
+	shift
+	# export ports="$@"
+
+	portargs() {
+		for port in "$@"; do
+
+			if [[ $port =~ ^[0-9]{2,5}$ ]]; then
+				echo "\-L ${port}\:localhost\:${port}"
+			elif [[ $port =~ ^[0-9]{2,5}:[0-9]{2,5}$ ]]; then
+				port_local=$(echo $port | cut -d':' -f 1)
+				port_remote=$(echo $port | cut -d':' -f 2)
+				echo "\-L ${port_local}\:localhost\:${port_remote}"
+			else
+				echo "Bad forwarding specification '$port'" 1>&2
+			fi
+
+		done
+	}
+
+	ssh -N $(portargs "$@" | xargs) $host
+}
