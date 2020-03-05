@@ -2,7 +2,7 @@
 	email = thomas@rauschig.org
 	name = Thomas Rausch
 [core]
-	editor = emacs -nw -fg white -bg black
+	editor = nano
 	quotepath = false
 
 [alias]
