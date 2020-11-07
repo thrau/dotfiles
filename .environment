@@ -10,7 +10,7 @@ TZ='Europe/Vienna'
 
 
 # set default editor
-EDITOR='emacs -nw'
+#EDITOR='emacs -nw'
 
 # maven
 M2_HOME=/opt/maven
