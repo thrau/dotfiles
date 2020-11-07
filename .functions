@@ -396,12 +396,14 @@ ssh-forward() {
 }
 
 proxy-chrome() {
+	CHROME_BIN=/usr/bin/chromium
+
 	port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 
 	ssh -D ${port} -q -C -N "$@" &
 	PROXY_PID=$!
 
-	chromium-browser \
+	$CHROME_BIN \
 		--proxy-server="socks5://localhost:${port}" \
 		--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost"
 
