@@ -39,5 +39,16 @@ if [ -d "$HOME/.local/share/applications" ]; then
 fi
 
 if [ -d "/usr/lib/jvm/default-java" ]; then
-	export JAVA_HOME=/usr/lib/jvm/default-java
+    export JAVA_HOME=/usr/lib/jvm/default-java
+fi
+
+# golang related variables
+
+if [ -d "$HOME/go" ]; then
+    export GOPATH=$HOME/go
+    PATH="$PATH:$GOPATH/bin"
+fi
+
+if [ -d /usr/lib/go-1.14 ]; then
+    export GOROOT=/usr/lib/go-1.14
 fi
