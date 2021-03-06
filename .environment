@@ -49,6 +49,6 @@ if [ -d "$HOME/go" ]; then
     PATH="$PATH:$GOPATH/bin"
 fi
 
-if [ -d /usr/lib/go-1.14 ]; then
-    export GOROOT=/usr/lib/go-1.14
+if [ -d /usr/lib/go ]; then
+    export GOROOT=/usr/lib/go
 fi
