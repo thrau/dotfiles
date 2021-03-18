@@ -4,8 +4,8 @@
 
 branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
 
-if [ $branch != "master" ]; then
-    echo "please change into master"
+if [ $branch != "master" ] && [ $branch != "main" ]; then
+    echo "please change into master/main"
     exit 1
 fi
 
@@ -13,7 +13,7 @@ git fetch --prune
 
 echo "Deleting merged local branches"
 for b in $(git branch --merged | cut -c3-); do
-    if [ $b == "master" ]; then
+    if [ $b == "master" ] || [ $b == "main" ]; then
         continue
     fi
     git branch -d $b
