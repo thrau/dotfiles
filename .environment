@@ -38,6 +38,10 @@ if [ -d "$HOME/.local/share/applications" ]; then
     PATH="$HOME/.local/share/applications:$PATH"
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [ -d "/usr/lib/jvm/default-java" ]; then
     export JAVA_HOME=/usr/lib/jvm/default-java
 fi
@@ -51,4 +55,8 @@ fi
 
 if [ -d /usr/lib/go ]; then
     export GOROOT=/usr/lib/go
+fi
+
+if [ -d /opt/node/bin ]; then
+    PATH=$PATH:/opt/node/bin
 fi
