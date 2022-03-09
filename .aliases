@@ -32,6 +32,8 @@ alias apt-update=aptupdate
 alias upgrade='apt-update; sudo apt upgrade -y; sudo apt-get autoclean'
 alias dist-upgrade='apt-update; sudo apt dist-upgrade;'
 
+alias bat=batcat
+
 # maven goals
 alias 'mvc'='mvn clean'
 alias 'mvce'='mvn clean eclipse:clean'
