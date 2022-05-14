@@ -22,3 +22,6 @@
 	ui = auto
 [push]
 	default = simple
+[credential]
+	helper = store
+	UseHttpPath = true

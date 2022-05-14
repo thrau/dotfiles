@@ -34,6 +34,10 @@ if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [ -d "$HOME/.local/share/applications" ]; then
     PATH="$HOME/.local/share/applications:$PATH"
 fi
@@ -57,6 +61,22 @@ if [ -d /usr/lib/go ]; then
     export GOROOT=/usr/lib/go
 fi
 
-if [ -d /opt/node/bin ]; then
+# pyenv
+
+if [ -d "$HOME/.pyenv" ]; then
+    PATH="$PATH:$HOME/.pyenv/bin"
+    export PYENV_ROOT="$HOME/.pyenv"
+    PATH="$(bash -ec 'IFS=:; paths=($PATH); for i in ${!paths[@]}; do if [[ ${paths[i]} == "'${PYENV_ROOT}/shims'" ]]; then unset '\''paths[i]'\''; fi; done; echo "${paths[*]}"')"
+    export PATH="$PYENV_ROOT/shims:${PATH}"
+fi
+
+# node js
+if [ -d "/opt/node/bin" ]; then
     PATH=$PATH:/opt/node/bin
+fi
+
+# pulumi
+
+if [ -d "$HOME/.pulumi/bin" ]; then
+    PATH=$PATH:$HOME/.pulumi/bin
 fi
