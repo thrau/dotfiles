@@ -409,3 +409,20 @@ proxy-chrome() {
 
 	kill $PROXY_PID
 }
+
+pw() {
+	pw_store=$HOME/.password-store/
+	if [ $(find $pw_store -wholename "*$1*" | wc -l) -eq 1 ]; then
+		f=$(find $pw_store -wholename "*$1*")
+		p=${f/#"$pw_store"}
+		p=${p%.gpg}
+
+		echo "password: $p"
+		pass $p
+		return $?
+	fi
+
+	pass find $1
+	echo "please specify your the search term"
+	return 1
+}
