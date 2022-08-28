@@ -52,13 +52,14 @@ fi
 
 # golang related variables
 
+if [ -d /usr/local/go ]; then
+    export GOROOT=/usr/local/go
+    PATH="$PATH:$GOROOT/bin"
+fi
+
 if [ -d "$HOME/go" ]; then
     export GOPATH=$HOME/go
     PATH="$PATH:$GOPATH/bin"
-fi
-
-if [ -d /usr/lib/go ]; then
-    export GOROOT=/usr/lib/go
 fi
 
 # pyenv
@@ -80,3 +81,5 @@ fi
 if [ -d "$HOME/.pulumi/bin" ]; then
     PATH=$PATH:$HOME/.pulumi/bin
 fi
+
+export PATH=$PATH
