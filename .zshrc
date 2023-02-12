@@ -66,3 +66,13 @@ fi
 if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/sls.zsh ]] && . /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/slss.zsh ]] && . /home/thomas/workspace/localstack/localstack-pro-samples/appsync-graphql-api/node_modules/tabtab/.completions/slss.zsh

@@ -1,0 +1,113 @@
+#!/bin/bash
+
+TERRAFORM_REPO_DIR=$HOME/.local/share/terraform
+TERRAFORM_BIN=$HOME/.local/bin/terraform
+
+function usage() {
+    echo "Manage terraform versions"
+    echo ""
+    echo "USAGE"
+    echo "  tf-manage <command> [options]"
+    echo ""
+    echo "Commands:"
+    echo "  list-installed"
+    echo "      list all installed versions and highlights the current active one"
+    echo ""
+    echo "  list-available"
+    echo "      list all available terraform versions that can be downloaded"
+    echo ""
+    echo "  install <version>"
+    echo "      install the given terraform version"
+    echo ""
+    echo "  activate <version>"
+    echo "      activate the given terraform version as default (needs to be installed first)"
+}
+
+function _install() {
+    [[ $# -eq 1 ]] || { usage; exit 1; }
+    version=$1
+    shift
+    
+    if ! _list_downloadable_versions | grep -e "^${version}\$"; then
+        echo "version ${version} not available"
+        exit 1
+    fi
+
+    zipfile=terraform_${version}_linux_amd64.zip
+
+    if ! test -f /tmp/${zipfile}; then
+        url="https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip"
+        wget ${url} -O /tmp/${zipfile}
+    fi
+
+    unzip -p /tmp/${zipfile} terraform >${TERRAFORM_REPO_DIR}/terraform-${version}
+    chmod +x ${TERRAFORM_REPO_DIR}/terraform-${version}
+}
+
+function _list_downloadable_versions() {
+	curl -s https://releases.hashicorp.com/terraform | grep -oP 'href="/terraform/\K.*(?=/")'
+}
+
+function _get_active_version() {
+    fpath=`readlink ${TERRAFORM_BIN}`
+
+    if test -z $fpath; then
+        echo "0.0.0"
+        return
+    fi
+
+    basename $fpath | cut -c11-
+}
+
+function _activate() {
+    [[ $# -eq 1 ]] || { usage; exit 1; }
+    version=$1
+    shift
+
+    bin_file="${TERRAFORM_REPO_DIR}/terraform-${version}"
+
+    if ! test -f ${bin_file}; then
+        echo "version ${version} not installed, run"
+        echo "tf-manage instal ${version}"
+    fi
+
+    if test -f ${TERRAFORM_BIN}; then
+        unlink ${TERRAFORM_BIN}
+    fi
+
+    ln -s ${bin_file} ${TERRAFORM_BIN}
+}
+
+function _list_installed_versions() {
+    active_version=`_get_active_version`
+
+    for f in `find $HOME/.local/share/terraform/ -type f -name "terraform-*" | sort -r`; do
+        ver=`basename $f | cut -c11-`
+        if [ $ver == $active_version ]; then
+            echo "* ${ver} (active)"
+        else
+            echo "  ${ver}"
+        fi
+    done
+}
+
+function main() {
+    [[ $# -lt 1 ]] && { usage; exit 1; }
+
+    test -d ${TERRAFORM_REPO_DIR} || mkdir -p ${TERRAFORM_REPO_DIR}
+
+    command_name=$1
+    shift
+
+    # invoke command
+    case $command_name in
+        "list-available")       _list_downloadable_versions "$@" ;;
+        "list-installed")       _list_installed_versions "$@" ;;
+        "install")              _install "$@" ;;
+        "activate")             _activate "$@" ;;
+        "help")                 usage && exit 0 ;;
+        *)                      usage && exit 1 ;;
+    esac
+}
+
+main "$@"
