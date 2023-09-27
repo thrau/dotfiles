@@ -96,6 +96,10 @@ alias apollo='ssh trausch@apollo.dslab.tuwien.ac.at'
 alias hydra='ssh trausch@hydra.infosys.tuwien.ac.at'
 alias dz='ssh thomas@divzero.at'
 
+# venv
+alias va='source .venv/bin/activate'
+alias vc='python -m venv .venv'
+
 # various
 alias texclean='rm -f *.aux *.log *.blg *.bbl *.synctex.gz'
 alias dus='du -h --max-depth=1 | sort -rh'
