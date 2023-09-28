@@ -25,3 +25,5 @@
 [credential]
 	helper = store
 	UseHttpPath = true
+[init]
+	defaultBranch = main
