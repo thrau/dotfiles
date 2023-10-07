@@ -426,3 +426,15 @@ pw() {
 	echo "please specify your the search term"
 	return 1
 }
+
+install-alternative() {
+	if ! test -f $1; then
+		echo "$1 is not a file"
+		return 1
+	fi
+
+	bin_name=$(basename $1)
+	location=$(realpath $1)
+
+	sudo update-alternatives --install /usr/local/bin/${bin_name} ${bin_name} $location 100
+}
