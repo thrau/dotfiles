@@ -73,8 +73,8 @@ alias 'gs.'="gs ."
 alias 'gsl'='git shortlog --pretty=format:"%Cgreen(%cr)%Creset - %s"'
 
 # docker
-alias "d"="sudo docker"
-alias "dc"="sudo docker-compose"
+alias "d"="docker"
+alias "dc"="docker compose"
 
 #quick rename tools
 alias gmv='qmv -f destination-only -e xed'
