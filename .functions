@@ -48,6 +48,27 @@ gp() {
 	git push $remote HEAD
 }
 
+## checkout main or master branch (preferring main)
+main() {
+	git branch > /dev/null || return;
+
+	git rev-parse main &> /dev/null
+
+	if [ $? -eq 0 ]; then
+		git checkout main
+		return
+	fi
+
+	git rev-parse master &> /dev/null
+
+	if [ $? -eq 0 ]; then
+		git checkout master
+		return
+	fi
+
+	echo "No branch main or master exists in current repo"
+}
+
 ## clone from bitbucket
 gcbb() {
 	if [ ! -d $1 ]; then
