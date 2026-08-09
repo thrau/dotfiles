@@ -8,7 +8,6 @@ TZ='Europe/Vienna'
 #export LANG=en_US.UTF-8
 #export LC_TYPE=en_US.UTF-8
 
-
 # set default editor
 #EDITOR='emacs -nw'
 
@@ -91,3 +90,8 @@ if [ -d "$HOME/.pulumi/bin" ]; then
 fi
 
 export PATH=$PATH
+
+# arch linux ssh agent
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
