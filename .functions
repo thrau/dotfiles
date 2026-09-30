@@ -308,13 +308,11 @@ rgit() {
 	done
 }
 
-alias rg=rgit
-
 ## recursive git status
-alias rgs='rg status -sb'
+alias rgs='rgit status -sb'
 
 ## recursive git remote update
-alias rgru='rg remote update'
+alias rgru='rgit remote update'
 
 
 ## convert svgs to pdfs
